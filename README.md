@@ -1,7 +1,10 @@
 ### Hi there 👋
 
 
-[![Tyree's GitHub stats](https://github-readme-stats.vercel.app/api?username=tyree-z)](https://github.com/tyree-z)
+
+[![Tyree's GitHub stats](https://github-readme-stats.vercel.app/api?username=tyree-z&theme=tokyonight&show_icons=true)](https://github.com/tyree-z) 
+
+
 <!--
 **tyree-z/tyree-z** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
