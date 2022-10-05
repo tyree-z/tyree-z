@@ -1,5 +1,3 @@
-<img src="" align="left" style="width: 100%" />  
-  
 
 ### <div align="center">Tyree Zacharopoulos</div>  
   
