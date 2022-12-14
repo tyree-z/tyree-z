@@ -59,26 +59,7 @@
 <br/>  
 
  
-<div align="center"><img src="https://github-readme-stats.vercel.app/api?username=tyree-z&show_icons=true&count_private=true&hide_border=true"/></div> 
-<div align="center"><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=tyree-z&hide_border=true&layout=compact"/> </div>  
-
-
-<br/>  
-
-<br/>  
-
-<div align="center"><img src="https://spotify-github-profile.vercel.app/api/view?uid=12158885732&cover_image=true&theme=default&show_offline=true&bar_color=ffffff&bar_color_cover=true" /></div>  
-
-<br/>  
-
-<div align="center">
-<img src="https://komarev.com/ghpvc/?username=tyree-z&&style=flat-square" align="center" />
-</div>  
-  
-
-<br/>  
-
-<div align="center">
+<div>
             <a href="https://www.buymeacoffee.com/tyree" target="_blank" style="display: inline-block;">
                 <img
                     src="https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-orange.svg?style=flat-square&logo=buymeacoffee" 
