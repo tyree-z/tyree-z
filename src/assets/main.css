@@ -23,7 +23,7 @@ body {
   margin-top: 0px;
 }
 
-canvas {
+/* canvas {
   position: relative;
 }
 
@@ -72,7 +72,7 @@ a:focus {
   overflow: hidden;
   white-space: pre-line;
   text-decoration: none;
-  line-height: 27px;
+  line-height: 40px;
 }
 
 .shadowText {
@@ -104,7 +104,7 @@ a:focus {
 .bShelf a:hover .hover-at {
   transition: 0.3s;
   color: #fd9800;
-}
+} */
 
 /*Mobile Devices*/
 @media (max-width: 500px) {
