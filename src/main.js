@@ -13,17 +13,19 @@ import './assets/main.css'
 
 const app = createApp(App)
 
+app.use(router)
+app.use(createPinia())
+app.use(InlineSvgPlugin)
 app.use(
   createAuth0({
-    domain: 'tyreez.us.auth0.com',
-    clientId: 'OTgjFuVKB86lggt4ZbmTOV5E7gLxitHE',
+    domain: 'tyreeapi.us.auth0.com',
+    clientId: 'ceKocopv5OI9XdsDt1Zqqvj4WOeqLNLL',
+    useRefreshTokens: true,
+    cacheLocation: 'localstorage',
     authorizationParams: {
       redirect_uri: window.location.origin
     }
   })
 )
-app.use(createPinia())
-app.use(InlineSvgPlugin)
-app.use(router)
 
 app.mount('#page')
