@@ -7,8 +7,8 @@ export default {
   mounted() {
     this.canvas = document.getElementById('canvas')
     this.ctx = this.canvas.getContext('2d')
-    this.ConnectionDist = Math.round(window.innerWidth * 0.08)
-    this.maxParticles = Math.round(window.innerHeight * 0.18)
+    this.ConnectionDist = Math.round(screen.width * 0.08)
+    this.maxParticles = Math.round(screen.height * 0.2)
     this.radius = 2
     this.Msqrt = Math.sqrt
     this.Mrandom = Math.random
@@ -25,6 +25,8 @@ export default {
   },
   methods: {
     handleResize() {
+      const dpr = window.devicePixelRatio
+      this.ctx.scale(dpr, dpr)
       this.w = this.canvas.width = window.innerWidth
       this.h = this.canvas.height = window.innerHeight
       this.midX = this.w * 0

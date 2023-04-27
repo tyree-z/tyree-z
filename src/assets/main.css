@@ -4,13 +4,13 @@
 
 @font-face {
   font-family: 'Moon';
-  src: url('https://files.cdn0.ca/tyree/root/fonts/Moon_Light.otf') format('opentype');
+  src: url('https://r2.tyree.ca/root/fonts/Moon_Light.otf') format('opentype');
   font-display: swap;
 }
 @font-face {
   font-family: 'Moon';
   font-weight: bold;
-  src: url('https://files.cdn0.ca/tyree/root/fonts/Moon_Bold.otf') format('opentype');
+  src: url('https://r2.tyree.ca/root/fonts/Moon_Bold.otf') format('opentype');
   font-display: swap;
 }
 
