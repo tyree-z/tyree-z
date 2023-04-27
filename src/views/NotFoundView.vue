@@ -1,3 +1,6 @@
+<script setup>
+import ParticleCanvas from '../components/Content/ParticleCanvas.vue'
+</script>
 <template>
   <div class="page-wrapper">
     <noscript>
@@ -9,15 +12,9 @@
       ></iframe>
     </noscript>
     <div class="canvasContent">
-      <canvas id="canvas"></canvas>
-      <!-- TODO -->
-      <component
-        :is="'script'"
-        type="application/javascript"
-        defer
-        src="https://files.cdn0.ca/tyree/root/js/particles.js"
-      ></component>
-      <!-- /TODO -->
+      <canvas id="canvas">
+        <ParticleCanvas />
+      </canvas>
     </div>
     <div
       class="modal modal-blur fade show"

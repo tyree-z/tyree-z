@@ -1,4 +1,3 @@
-// File: NavBarComponent.vue
 <template>
   <header class="navbar navbar-expand-md navbar-dark bg-purple-lt text-light d-print-none">
     <div class="container-xl">
@@ -181,25 +180,7 @@
           </svg>
         </a>
       </h1>
-      <!-- <div class="navbar-nav flex-row order-md-last">
-                  <div class="nav-item dropdown">
-                     <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                        <span class="avatar avatar-sm" style="background-image: url('https://github.com/tyree-z.png')"></span>
-                        <div class="d-none d-xl-block ps-2">
-                           <div>Tyree Zacharopoulos</div>
-                           <div class="mt-1 small text-muted">M</div>
-                        </div>
-                     </a>
-                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                        <a href="#" class="dropdown-item">Status</a>
-                        <a href="#" class="dropdown-item">Profile</a>
-                        <a href="#" class="dropdown-item">Feedback</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="./settings.html" class="dropdown-item">Settings</a>
-                        <a href="./sign-in.html" class="dropdown-item">Logout</a>
-                     </div>
-                  </div>
-               </div> -->
+      <NavBarProfile />
       <div class="collapse navbar-collapse" id="navbar-menu">
         <div
           class="d-flex flex-column flex-md-row flex-fill align-items-stretch align-items-md-center"
@@ -237,8 +218,12 @@
 </template>
 
 <script>
+import NavBarProfile from './NavBarProfile.vue'
 export default {
-  name: 'NavBarComponent'
+  name: 'NavBarComponent',
+  components: {
+    NavBarProfile
+  }
 }
 </script>
 
