@@ -99,4 +99,10 @@ a {
   -ms-user-select: none;
   user-select: none;
 }
+
+a,
+.nav-link:hover {
+  color: #d8d8d8;
+  transition: 0.4s;
+}
 </style>

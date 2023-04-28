@@ -60,7 +60,7 @@ import HandwrittenName from '../components/Content/HandwrittenName.vue'
   </div>
 </template>
 
-<style>
+<style scoped>
 html,
 body {
   overflow-y: scroll;
@@ -68,8 +68,7 @@ body {
   background: #000;
 }
 
-a,
-.nav-item:hover {
+a {
   color: #d8d8d8;
   transition: 0.4s;
 }
