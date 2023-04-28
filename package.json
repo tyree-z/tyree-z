@@ -1,6 +1,6 @@
 {
   "name": "tyree-z",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": true,
   "scripts": {
     "dev": "vite --host",
@@ -10,9 +10,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@auth0/auth0-spa-js": "^2.0.4",
     "@auth0/auth0-vue": "^2.2.0",
     "@tabler/core": "^1.0.0-beta17",
     "@tabler/icons-vue": "^2.17.0",
+    "axios": "^1.4.0",
     "gsap": "^3.11.5",
     "pinia": "^2.0.32",
     "vue": "^3.2.47",

@@ -8,10 +8,12 @@ export default {
   setup() {
     const { loginWithRedirect } = useAuth0()
 
+    const login = async () => {
+      loginWithRedirect()
+    }
+
     return {
-      login: () => {
-        loginWithRedirect()
-      }
+      login
     }
   }
 }

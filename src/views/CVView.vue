@@ -1,6 +1,3 @@
-<!-- <script setup>
-import ParticleCanvas from '../components/Content/ParticleCanvas.vue'
-</script> -->
 <template>
   <div class="page-wrapper">
     <div class="container-xl">

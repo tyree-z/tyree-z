@@ -6,7 +6,8 @@
           <ul class="list-inline list-inline-dots mb-0">
             <li class="list-inline-item shadowText">
               Copyright © 2023
-              <a href="." class="link-secondary">Tyree Zacharopoulos</a>. All rights reserved.
+              <router-link to="/" class="link-secondary">Tyree Zacharopoulos</router-link> All
+              rights reserved.
             </li>
             <li class="list-inline-item">
               <a class="link-secondary shadowText" rel="noopener"><a id="packageVersion"></a></a>

@@ -1,5 +1,7 @@
 <template>
-  <canvas id="canvas" />
+  <div class="canvasContent">
+    <canvas id="canvas" />
+  </div>
 </template>
 
 <script>
@@ -7,8 +9,19 @@ export default {
   mounted() {
     this.canvas = document.getElementById('canvas')
     this.ctx = this.canvas.getContext('2d')
-    this.ConnectionDist = Math.round(screen.width * 0.08)
-    this.maxParticles = Math.round(screen.height * 0.2)
+    // detect if mobile device
+    this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    )
+    if (this.isMobile) {
+      console.log('is mobile')
+      this.maxParticles = Math.round(screen.height * 0.055)
+      this.ConnectionDist = Math.round(screen.width * 0.3)
+    } else {
+      console.log('is not mobile')
+      this.ConnectionDist = Math.round(screen.width * 0.1)
+      this.maxParticles = Math.round(screen.height * 0.2)
+    }
     this.radius = 2
     this.Msqrt = Math.sqrt
     this.Mrandom = Math.random
@@ -141,3 +154,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+canvas {
+  background-color: black;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.canvasContent {
+  position: absolute;
+}
+</style>

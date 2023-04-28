@@ -1,5 +1,5 @@
 <template>
-  <header class="navbar navbar-expand-md navbar-dark bg-purple-lt text-light d-print-none">
+  <header class="navbar navbar-expand-md bg-purple-lt d-print-none">
     <div class="container-xl">
       <button
         class="navbar-toggler"
@@ -13,9 +13,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-        <a href=".">
+        <router-link to="/">
           <HandwrittenFirstName />
-        </a>
+        </router-link>
       </h1>
       <NavBarProfile />
       <div class="collapse navbar-collapse" id="navbar-menu">
@@ -31,6 +31,51 @@
                 <span class="nav-link-title"> Service Status </span>
               </a>
             </li>
+            <!--  -->
+
+            <li
+              v-if="isAuthenticated"
+              class="nav-item dropdown"
+              :class="{ active: $route.path === ['/apps/myschedule', '/apps/whosworking'] }"
+            >
+              <a
+                class="nav-link dropdown-toggle"
+                href="#navbar-apps"
+                data-bs-toggle="dropdown"
+                data-bs-auto-close="outside"
+                role="button"
+                aria-expanded="false"
+              >
+                <span class="nav-link-icon d-md-none d-lg-inline-block"
+                  ><IconCampfire class="icon" />
+                </span>
+                <span class="nav-link-title"> Apps </span>
+              </a>
+              <div class="dropdown-menu">
+                <div class="dropend">
+                  <a
+                    class="dropdown-item dropdown-toggle"
+                    href="#navbar-apps-work"
+                    data-bs-toggle="dropdown"
+                    data-bs-auto-close="outside"
+                    role="button"
+                    aria-expanded="false"
+                  >
+                    Work
+                  </a>
+                  <div class="dropdown-menu">
+                    <router-link to="/apps/myschedule" class="dropdown-item"
+                      >My Schedule</router-link
+                    >
+                    <router-link to="/apps/whosworking" class="dropdown-item"
+                      >Whos Working Today</router-link
+                    >
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!--  -->
           </ul>
         </div>
       </div>
@@ -39,10 +84,13 @@
 </template>
 
 <script setup>
-import { IconListCheck } from '@tabler/icons-vue'
+import { IconListCheck, IconCampfire } from '@tabler/icons-vue'
+import { useAuth0 } from '@auth0/auth0-vue'
 
 import NavBarProfile from './NavBarProfile.vue'
 import HandwrittenFirstName from '../Content/HandwrittenFirstName.vue'
+
+const { isAuthenticated } = useAuth0()
 </script>
 
 <style scoped>

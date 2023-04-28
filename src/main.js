@@ -23,7 +23,9 @@ app.use(
     useRefreshTokens: true,
     cacheLocation: 'localstorage',
     authorizationParams: {
-      redirect_uri: window.location.origin
+      redirect_uri: window.location.origin,
+      audience: 'https://api.dev.tyree.ca/',
+      scope: 'openid profile email offline_access schedules'
     }
   })
 )

@@ -8,6 +8,23 @@ const router = createRouter({
       name: 'home',
       component: () => import('../views/HomeView.vue')
     },
+    // nested route apps
+    {
+      path: '/apps',
+      name: 'apps',
+      children: [
+        {
+          path: 'myschedule',
+          name: 'myschedule',
+          component: () => import('../views/AppViews/Work/MyScheduleApp.vue')
+        },
+        {
+          path: 'whosworking',
+          name: 'whosworking',
+          component: () => import('../views/AppViews/Work/WhosWorkingTodayApp.vue')
+        }
+      ]
+    },
     {
       path: '/about',
       name: 'about',

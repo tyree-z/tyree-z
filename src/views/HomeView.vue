@@ -14,13 +14,11 @@ import HandwrittenName from '../components/Content/HandwrittenName.vue'
         style="display: none; visibility: hidden"
       ></iframe>
     </noscript>
-    <div class="canvasContent">
-      <ParticleCanvas />
-    </div>
+    <ParticleCanvas />
     <div class="page-body">
       <div class="mainContent">
         <article>
-          <div id="nameContent">
+          <div class="mb-2" id="nameContent">
             <HandwrittenName />
           </div>
           <ul class="bShelf">
@@ -63,13 +61,17 @@ import HandwrittenName from '../components/Content/HandwrittenName.vue'
 </template>
 
 <style>
-canvas {
-  position: relative;
+html,
+body {
+  overflow-y: scroll;
+  height: 100%;
+  background: #000;
 }
 
-a {
+a,
+.nav-item:hover {
   color: #d8d8d8;
-  transition: 0.3s;
+  transition: 0.4s;
 }
 
 a:hover,
