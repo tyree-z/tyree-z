@@ -46,7 +46,7 @@ export default {
       this.midX = this.w * 0
     },
     createParticles() {
-      let vRange = 1,
+      let vRange = 2,
         vMin = 0.0001,
         vx,
         vy
@@ -156,13 +156,8 @@ export default {
 }
 </script>
 
-<!-- <style scoped>
+<style scoped>
 canvas {
   background-color: black;
-  width: 100%;
-  height: 100%;
 }
-.canvasContent {
-  position: absolute;
-}
-</style> -->
+</style>
