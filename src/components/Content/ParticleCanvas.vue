@@ -1,7 +1,7 @@
 <template>
-  <div class="canvasContent">
+  <span class="canvasContent">
     <canvas id="canvas" />
-  </div>
+  </span>
 </template>
 
 <script>
@@ -41,12 +41,13 @@ export default {
       const dpr = window.devicePixelRatio
       this.ctx.scale(dpr, dpr)
       this.w = this.canvas.width = window.innerWidth
-      this.h = this.canvas.height = window.innerHeight
+      this.h = this.canvas.height =
+        window.innerHeight - document.getElementsByClassName('navbar')[0].clientHeight
       this.midX = this.w * 0
     },
     createParticles() {
       let vRange = 1,
-        vMin = 0.5,
+        vMin = 0.0001,
         vx,
         vy
       for (let i = 0; i < this.maxParticles; i++) {
@@ -155,14 +156,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<!-- <style scoped>
 canvas {
   background-color: black;
-  position: relative;
   width: 100%;
   height: 100%;
 }
 .canvasContent {
   position: absolute;
 }
-</style>
+</style> -->

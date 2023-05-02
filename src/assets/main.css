@@ -14,10 +14,9 @@
   font-display: swap;
 }
 
-html,
 body {
-  overflow-y: scroll;
-  height: 100%;
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 /* html,
