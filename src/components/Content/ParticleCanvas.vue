@@ -104,8 +104,8 @@ export default {
             this.ctx.moveTo(p1.x, p1.y)
             this.ctx.strokeStyle =
               'hsla(' +
-              280 +
-              ', 100%, 50%, ' +
+              278 +
+              ', 65%, 45%, ' +
               (1 - (currentDist * 100) / this.ConnectionDist / 100) +
               ')'
             this.ctx.lineTo(p2.x, p2.y)
@@ -128,7 +128,7 @@ export default {
         p = this.particles[i]
         this.ctx.beginPath()
         this.ctx.arc(p.x, p.y, this.radius, 0, Math.PI * 2)
-        this.ctx.fillStyle = 'hsla(' + 280 + ', 100%, 50%, 1)'
+        this.ctx.fillStyle = 'hsla(' + 278 + ', 55%, 25%, 1)'
         this.ctx.fill()
       }
     },

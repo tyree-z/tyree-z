@@ -38,12 +38,34 @@ const fetchEmployees = async () => {
     headers: {
       Authorization: `Bearer ${accessToken}`
     }
-  }).then((response) => {
-    if (response.status === 401) {
-      console.log('unauthorized')
-    }
-    return response
   })
+    .then((response) => {
+      if (response.status === 401) {
+        console.log('unauthorized')
+      }
+      return response
+    })
+    .catch((error) => {
+      // if networkerror
+      if (error.message === 'NetworkError when attempting to fetch resource.') {
+        alert('There was an error fetching schedules. Please try again later.')
+        return
+      }
+    })
+
+  if (!response) {
+    employees.value = [
+      {
+        name: 'API Error',
+        start: 'API Error',
+        end: 'API Error',
+        position: 'API Error',
+        date: 'API Error'
+      }
+    ]
+  } else {
+    employees.value = await response.json()
+  }
 
   employees.value = await response.json()
 }

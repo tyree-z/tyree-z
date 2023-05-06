@@ -40,14 +40,31 @@ const fetchSchedules = async () => {
     headers: {
       Authorization: `Bearer ${accessToken}`
     }
-  }).then((response) => {
-    if (response.status === 401) {
-      console.log('unauthorized')
-    }
-    return response
   })
+    .then((response) => {
+      if (response.status === 401) {
+        console.log('unauthorized')
+      }
+      return response
+    })
+    .catch((error) => {
+      // if networkerror
+      if (error.message === 'NetworkError when attempting to fetch resource.') {
+        alert('There was an error fetching your schedule. Please try again later.')
+        return
+      }
+    })
 
-  shifts.value = await response.json()
+  if (!response) {
+    shifts.value = [
+      {
+        scheduled_start: 'API Error',
+        scheduled_end: 'API Error'
+      }
+    ]
+  } else {
+    shifts.value = await response.json()
+  }
 }
 
 onMounted(() => {
