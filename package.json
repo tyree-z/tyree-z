@@ -10,7 +10,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@auth0/auth0-spa-js": "^2.0.4",
+    "@auth0/auth0-spa-js": "^2.0.5",
     "@auth0/auth0-vue": "^2.2.0",
     "@tabler/core": "^1.0.0-beta17",
     "@tabler/icons-vue": "^2.20.0",
