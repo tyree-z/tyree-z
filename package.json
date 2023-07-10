@@ -20,7 +20,7 @@
     "pinia": "^2.1.3",
     "vue": "^3.2.47",
     "vue-inline-svg": "^2.1.3",
-    "vue-router": "^4.2.1",
+    "vue-router": "^4.2.4",
     "vue-transition": "^0.1.3"
   },
   "devDependencies": {
