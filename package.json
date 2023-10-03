@@ -1,6 +1,6 @@
 {
   "name": "tyree-z",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "vite --host",
@@ -12,6 +12,8 @@
   "dependencies": {
     "@auth0/auth0-spa-js": "^2.1.2",
     "@auth0/auth0-vue": "^2.2.0",
+    "@headlessui/vue": "^1.7.16",
+    "@heroicons/vue": "^2.0.18",
     "@tabler/core": "^1.0.0-beta17",
     "@tabler/icons-vue": "^2.23.0",
     "axios": "^1.4.0",
@@ -28,9 +30,12 @@
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.0",
     "@vue/eslint-config-prettier": "^7.1.0",
+    "autoprefixer": "^10.4.16",
     "eslint": "^8.50.0",
     "eslint-plugin-vue": "^9.11.1",
+    "postcss": "^8.4.31",
     "prettier": "^2.8.4",
+    "tailwindcss": "^3.3.3",
     "vite": "^4.3.9"
   }
 }
