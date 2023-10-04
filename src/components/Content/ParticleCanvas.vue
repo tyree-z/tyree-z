@@ -118,8 +118,7 @@ export default {
       const dpr = window.devicePixelRatio
       this.ctx.scale(dpr, dpr)
       this.w = this.canvas.width = window.innerWidth
-      this.h = this.canvas.height =
-        window.innerHeight - document.getElementsByClassName('navbar')[0].clientHeight
+      this.h = this.canvas.height = window.innerHeight
       this.midX = this.w * 0
     },
     createParticles() {
@@ -185,6 +184,7 @@ export default {
               ', 65%, 45%, ' +
               (1 - (currentDist * 100) / this.ConnectionDist / 100) +
               ')'
+            this.ctx.lineWidth = 2
             this.ctx.lineTo(p2.x, p2.y)
             this.ctx.stroke()
           }
