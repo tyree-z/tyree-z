@@ -1,22 +1,28 @@
 <template>
-  <footer class="footer footer-transparent d-print-none">
-    <div class="container-xl">
-      <div class="row text-center align-items-center flex-row-reverse">
-        <div class="col-12 col-lg-auto mt-3 mt-lg-0">
-          <ul class="list-inline list-inline-dots mb-0">
-            <li class="list-inline-item shadowText">
-              Copyright © 2023
-              <router-link to="/" class="link-secondary">Tyree Zacharopoulos</router-link> All
-              rights reserved.
-            </li>
-            <li class="list-inline-item">
-              <a class="link-secondary shadowText" rel="noopener"><a id="packageVersion"></a></a>
-            </li>
-            <!-- <li class="list-inline-item">BrowserID: <a id="bFP"></a></li> -->
-          </ul>
-        </div>
-      </div>
-    </div>
+  <footer
+    class="fixed bottom-0 left-0 z-20 w-full p-4 bg-dark border-t border-gray-900 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600"
+  >
+    <span class="text-sm text-gray-700 sm:text-center dark:text-gray-400"
+      >© 2023
+      <router-link to="/" class="hover:underline text-primary">Tyree Zacharopoulos</router-link>.
+      All Rights Reserved.</span
+    >
+    <ul
+      class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-700 dark:text-gray-400 sm:mt-0"
+    >
+      <li>
+        <a href="#" class="mr-4 hover:underline md:mr-6">About</a>
+      </li>
+      <li>
+        <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+      </li>
+      <li>
+        <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
+      </li>
+      <li>
+        <a href="#" class="hover:underline">Contact</a>
+      </li>
+    </ul>
   </footer>
 </template>
 
@@ -34,12 +40,9 @@ export default {
 
 <style scoped>
 .footer {
-  position: fixed;
-  bottom: 0;
   text-decoration: none;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: darkgray;
 }
 </style>
