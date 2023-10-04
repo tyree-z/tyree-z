@@ -3,15 +3,14 @@ import { createAuth0 } from '@auth0/auth0-vue'
 import { createPinia } from 'pinia'
 import { InlineSvgPlugin } from 'vue-inline-svg'
 
-import './styles/app.css'
-
 import App from './App.vue'
 import router from './router'
 
+import './styles/app.css'
 // import '@tabler/core/dist/css/tabler.min.css'
 // import '@tabler/core/dist/js/tabler.esm.min.js'
 
-// import './assets/main.css'
+import './assets/main.css'
 
 const app = createApp(App)
 
@@ -32,4 +31,4 @@ app.use(
   })
 )
 
-app.mount('#page')
+app.mount('#application')
