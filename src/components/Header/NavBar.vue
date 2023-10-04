@@ -1,108 +1,147 @@
 <template>
-  <header class="navbar navbar-expand-md bg-purple-lt d-print-none">
-    <div class="container-xl">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbar-menu"
-        aria-controls="navbar-menu"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-        <router-link to="/">
-          <HandwrittenFirstName />
-        </router-link>
-      </h1>
-      <NavBarProfile />
-      <div class="collapse navbar-collapse" id="navbar-menu">
-        <div
-          class="d-flex flex-column flex-md-row flex-fill align-items-stretch align-items-md-center"
-        >
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="https://status.tyree.ca">
-                <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <IconListCheck class="icon icon-tabler icon-tabler-zoom-check" />
-                </span>
-                <span class="nav-link-title"> Service Status </span>
-              </a>
-            </li>
-            <!--  -->
-
-            <li
-              v-if="isAuthenticated"
-              class="nav-item dropdown"
-              :class="{ active: $route.path === ['/apps/myschedule', '/apps/whosworking'] }"
-            >
+  <Disclosure as="nav" class="bg-gray-900 navbar" v-slot="{ open }">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+          <DisclosureButton
+            class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          >
+            <span class="absolute -inset-0.5" />
+            <span class="sr-only">Open main menu</span>
+            <Bars3Icon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
+            <XMarkIcon v-else class="block h-6 w-6" aria-hidden="true" />
+          </DisclosureButton>
+        </div>
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex flex-shrink-0 items-center">
+            <img
+              class="h-8 w-auto"
+              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+              alt="Your Company"
+            />
+          </div>
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
               <a
-                class="nav-link dropdown-toggle"
-                href="#navbar-apps"
-                data-bs-toggle="dropdown"
-                data-bs-auto-close="outside"
-                role="button"
-                aria-expanded="false"
+                v-for="item in navigation"
+                :key="item.name"
+                :href="item.href"
+                :class="[
+                  item.current
+                    ? 'bg-gray-900 text-white'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  'rounded-md px-3 py-2 text-sm font-medium'
+                ]"
+                :aria-current="item.current ? 'page' : undefined"
+                >{{ item.name }}</a
               >
-                <span class="nav-link-icon d-md-none d-lg-inline-block"
-                  ><IconCampfire class="icon" />
-                </span>
-                <span class="nav-link-title"> Apps </span>
-              </a>
-              <div class="dropdown-menu">
-                <div class="dropend">
-                  <a
-                    class="dropdown-item dropdown-toggle"
-                    href="#navbar-apps-work"
-                    data-bs-toggle="dropdown"
-                    data-bs-auto-close="outside"
-                    role="button"
-                    aria-expanded="false"
-                  >
-                    Work
-                  </a>
-                  <div class="dropdown-menu">
-                    <router-link to="/apps/myschedule" class="dropdown-item"
-                      >My Schedule</router-link
-                    >
-                    <router-link to="/apps/whosworking" class="dropdown-item"
-                      >Whos Working Today</router-link
-                    >
-                  </div>
-                </div>
-              </div>
-            </li>
+            </div>
+          </div>
+        </div>
+        <div
+          class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+        >
+          <button
+            type="button"
+            class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+          >
+            <span class="absolute -inset-1.5" />
+            <span class="sr-only">View notifications</span>
+            <BellIcon class="h-6 w-6" aria-hidden="true" />
+          </button>
 
-            <!--  -->
-          </ul>
+          <!-- Profile dropdown -->
+          <Menu as="div" class="relative ml-3">
+            <div>
+              <MenuButton
+                class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+              >
+                <span class="absolute -inset-1.5" />
+                <span class="sr-only">Open user menu</span>
+                <img
+                  class="h-8 w-8 rounded-full"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  alt=""
+                />
+              </MenuButton>
+            </div>
+            <transition
+              enter-active-class="transition ease-out duration-100"
+              enter-from-class="transform opacity-0 scale-95"
+              enter-to-class="transform opacity-100 scale-100"
+              leave-active-class="transition ease-in duration-75"
+              leave-from-class="transform opacity-100 scale-100"
+              leave-to-class="transform opacity-0 scale-95"
+            >
+              <MenuItems
+                class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              >
+                <MenuItem v-slot="{ active }">
+                  <a
+                    href="#"
+                    :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
+                    >Your Profile</a
+                  >
+                </MenuItem>
+                <MenuItem v-slot="{ active }">
+                  <a
+                    href="#"
+                    :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
+                    >Settings</a
+                  >
+                </MenuItem>
+                <MenuItem v-slot="{ active }">
+                  <a
+                    href="#"
+                    :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
+                    >Sign out</a
+                  >
+                </MenuItem>
+              </MenuItems>
+            </transition>
+          </Menu>
         </div>
       </div>
     </div>
-  </header>
+
+    <DisclosurePanel class="sm:hidden">
+      <div class="space-y-1 px-2 pb-3 pt-2">
+        <DisclosureButton
+          v-for="item in navigation"
+          :key="item.name"
+          as="a"
+          :href="item.href"
+          :class="[
+            item.current
+              ? 'bg-gray-900 text-white'
+              : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+            'block rounded-md px-3 py-2 text-base font-medium'
+          ]"
+          :aria-current="item.current ? 'page' : undefined"
+          >{{ item.name }}</DisclosureButton
+        >
+      </div>
+    </DisclosurePanel>
+  </Disclosure>
 </template>
 
 <script setup>
-import { IconListCheck, IconCampfire } from '@tabler/icons-vue'
-import { useAuth0 } from '@auth0/auth0-vue'
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems
+} from '@headlessui/vue'
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 
-import NavBarProfile from './NavBarProfile.vue'
-import HandwrittenFirstName from '../Content/HandwrittenFirstName.vue'
-
-const { isAuthenticated } = useAuth0()
+const navigation = [
+  { name: 'Dashboard', href: '#', current: true },
+  { name: 'Team', href: '#', current: false },
+  { name: 'Projects', href: '#', current: false },
+  { name: 'Calendar', href: '#', current: false }
+]
 </script>
-
-<style scoped>
-a {
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-a,
-.nav-link:hover {
-  color: #d8d8d8;
-  transition: 0.4s;
-}
-</style>
