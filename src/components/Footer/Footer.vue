@@ -31,9 +31,9 @@ import packageJson from '../../../package.json'
 export default {
   name: 'FooterComponent',
   created() {
-    this.$nextTick(() => {
-      document.getElementById('packageVersion').innerHTML = 'v' + packageJson.version
-    })
+    // this.$nextTick(() => {
+    //   document.getElementById('packageVersion').innerHTML = 'v' + packageJson.version
+    // })
   }
 }
 </script>
