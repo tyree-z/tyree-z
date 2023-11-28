@@ -1,5 +1,7 @@
 <template>
-  <div class="bg-gray-100 p-4">
+  <NavBar />
+  <Footer />
+  <div class="bg-base-100 p-4">
     <h1 class="text-2xl font-semibold mb-4">Combined Data</h1>
     <div class="overflow-x-auto">
       <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
@@ -65,68 +67,57 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { reactive, onMounted } from 'vue'
+import axios from 'axios'
+
 export default {
-  data() {
-    return {
-      dataLinks: [],
-      siteData: [],
-      combinedDataList: [],
-    };
-  },
-  mounted() {
-    this.fetchDataLinks();
-    this.fetchSiteData();
-  },
-  methods: {
-    fetchDataLinks() {
-      // Make the API request for data links using Axios
+  setup() {
+    const dataLinks = reactive([])
+    const siteData = reactive([])
+    const combinedDataList = reactive([])
+
+    const fetchDataLinks = () => {
       axios
         .get('https://isp.tyree.ca/nms/api/v2.1/data-links?siteLinksOnly=false', {
           headers: {
-            'accept': 'application/json',
-            'x-auth-token': '96af7eb1-025d-44c5-97f3-d73ae5a8d865',
-          },
+            accept: 'application/json',
+            'x-auth-token': 'Expired Token ;)'
+          }
         })
         .then((response) => {
-          this.dataLinks = response.data;
-          this.combineData();
+          dataLinks = response.data
+          combineData()
         })
         .catch((error) => {
-          console.error('Error fetching data links:', error);
-        });
-    },
-    fetchSiteData() {
-      // Make the API request for site data using Axios
+          console.error('Error fetching data links:', error)
+        })
+    }
+
+    const fetchSiteData = () => {
       axios
         .get('https://isp.tyree.ca/nms/api/v2.1/sites', {
           headers: {
-            'accept': 'application/json',
-            'x-auth-token': '96af7eb1-025d-44c5-97f3-d73ae5a8d865',
-          },
+            accept: 'application/json',
+            'x-auth-token': 'Expired Token ;)'
+          }
         })
         .then((response) => {
-          this.siteData = response.data;
-          this.combineData();
+          siteData = response.data
+          combineData()
         })
         .catch((error) => {
-          console.error('Error fetching site data:', error);
-        });
-    },
-    combineData() {
-      // Combine the data from dataLinks and siteData based on matching IDs or any other criteria
-      // You can implement this logic based on your specific requirements
-      // For example, you can use nested loops to find matching data and create a combinedDataList.
-      // Here, we assume a simple example where data with matching IDs are combined.
+          console.error('Error fetching site data:', error)
+        })
+    }
 
-      // Clear the combined data list before merging
-      this.combinedDataList = [];
+    const combineData = () => {
+      combinedDataList.splice(0) // Clear the combined data list before merging
 
       // Merge the data based on IDs
-      for (const dataLink of this.dataLinks) {
-        const matchingSiteData = this.siteData.find((site) => site.id === dataLink.to.device.id);
+      for (const dataLink of dataLinks) {
+        const matchingSiteData = siteData.find((site) => site.id === dataLink.to.device.id)
         if (matchingSiteData) {
-          this.combinedDataList.push({
+          combinedDataList.push({
             ...dataLink,
             siteName: matchingSiteData.identification.name,
             siteType: matchingSiteData.identification.type,
@@ -135,13 +126,24 @@ export default {
             siteDeviceOutageCount: matchingSiteData.description.deviceOutageCount,
             siteDeviceListStatus: matchingSiteData.description.deviceListStatus,
             siteRegulatoryDomain: matchingSiteData.description.regulatoryDomain,
-            siteSLA: matchingSiteData.description.sla,
-          });
+            siteSLA: matchingSiteData.description.sla
+          })
         }
       }
-    },
-  },
-};
+    }
+
+    onMounted(() => {
+      fetchDataLinks()
+      fetchSiteData()
+    })
+
+    return {
+      dataLinks,
+      siteData,
+      combinedDataList
+    }
+  }
+}
 </script>
 
 <style scoped>
