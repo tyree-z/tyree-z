@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="navbar-center"></div>
-    <div class="navbar-end">
+    <!-- <div class="navbar-end">
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
@@ -27,7 +27,7 @@
           <li><a>Logout</a></li>
         </ul>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
