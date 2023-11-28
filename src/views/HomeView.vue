@@ -1,32 +1,74 @@
 <template>
-  <article>
-    <div class="bg-black h-screen relative">
-      <!-- ParticleCanvas as the background -->
-      <ParticleCanvas class="top-0 left-0 w-full h-full blur-sm" />
-      <!-- Main content wrapper -->
-      <div class="absolute inset-0 z-10 h-screen flex flex-col items-center justify-center">
-        <!-- HandwrittenName section -->
-        <div class="text-white mb-4 w-1/2">
-          <HandwrittenName />
-        </div>
+  <NavBar />
+  <div class="hero min-h-screen">
+    <ParticleCanvas class="top-0 left-0 w-full h-full blur-sm" />
 
-        <!-- Social links section -->
-        <div class="text-white">
+    <div class="hero-content text-center">
+      <div class="grid grid-cols-1 gap-3">
+        <HandwrittenName class="h-20 place-self-center" />
+        <div class="max-w-md place-self-center">
+          <div class="py-6">
+            <div class="text-base-content">
+              <ul class="list-disc pl-4 place-self-center">
+                <li class="mb-2 flex items-center justify-center">
+                  <a href="https://git.io/JDv5M" class="hover-github flex items-center">
+                    <IconBrandGithub class="mr-1" />
+                    tyree-z
+                  </a>
+                </li>
+                <li class="mb-2 flex items-center justify-center">
+                  <a
+                    href="https://www.instagram.com/tyree.zacharopoulos/"
+                    class="hover-instagram flex items-center"
+                  >
+                    <IconBrandInstagram class="mr-1" />
+                    tyree.zacharopoulos
+                  </a>
+                </li>
+                <li class="flex items-center justify-center">
+                  <a
+                    href="#"
+                    class="hover-at protectedEmail flex items-center"
+                    data-name="tyree"
+                    data-domain="tyree"
+                    data-tld="ca"
+                    onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"
+                  >
+                    <IconAt class="mr-1" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  </div>
+  <!-- WIP _______________________________ -->
+  <!-- Social links section -->
+  <!-- <div class="text-base-content">
           <ul class="list-disc pl-4">
             <li class="mb-2 flex items-center justify-center">
-              <a href="https://www.snapchat.com/add/tyree-z" class="hover-snapchat">
+              <a
+                href="https://www.snapchat.com/add/tyree-z"
+                class="hover-snapchat flex items-center"
+              >
                 <IconBrandSnapchat class="mr-1" />
                 tyree-z
               </a>
             </li>
             <li class="mb-2 flex items-center justify-center">
-              <a href="https://git.io/JDv5M" class="hover-github">
+              <a href="https://git.io/JDv5M" class="hover-github flex items-center">
                 <IconBrandGithub class="mr-1" />
                 tyree-z
               </a>
             </li>
             <li class="mb-2 flex items-center justify-center">
-              <a href="https://www.instagram.com/tyree.zacharopoulos/" class="hover-instagram">
+              <a
+                href="https://www.instagram.com/tyree.zacharopoulos/"
+                class="hover-instagram flex items-center"
+              >
                 <IconBrandInstagram class="mr-1" />
                 tyree.zacharopoulos
               </a>
@@ -34,36 +76,34 @@
             <li class="flex items-center justify-center">
               <a
                 href="#"
-                class="hover-at protectedEmail"
+                class="hover-at protectedEmail flex items-center"
                 data-name="tyree"
                 data-domain="tyree"
                 data-tld="ca"
-                @click.prevent="openEmail()"
+                onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"
               >
                 <IconAt class="mr-1" />
               </a>
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </article>
+        </div> -->
+  <!-- </div>
+    </div> -->
+  <!-- <Footer /> -->
+  <!-- </article> -->
 </template>
 
 <script setup>
 import { IconBrandGithub, IconBrandSnapchat, IconBrandInstagram, IconAt } from '@tabler/icons-vue'
 import ParticleCanvas from '../components/Content/ParticleCanvas.vue'
 import HandwrittenName from '../components/Content/HandwrittenName.vue'
-
-const openEmail = () => {
-  const email = 'tyree@tyree.ca' // You can update this with your actual email
-  window.location.href = 'mailto:' + email
-}
+import NavBar from '../components/Header/NavBar.vue'
+import Footer from '../components/Footer/Footer.vue'
 </script>
 
 <style scoped>
 a {
-  color: #d8d8d8;
+  /* color: #d8d8d8; */
   transition: 0.4s;
 }
 
@@ -96,6 +136,13 @@ a:hover .hover-at {
 
 .protectedEmail:after {
   content: attr(data-name) '@' attr(data-domain) '.' attr(data-tld);
+}
+ul li a {
+  display: flex;
+  align-items: center;
+}
+ul li a .mr-1 {
+  margin-right: 0.5rem; /* Adjust the spacing between icon and text */
 }
 </style>
 
