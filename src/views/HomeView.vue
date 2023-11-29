@@ -94,7 +94,7 @@
 </template>
 
 <script setup>
-import { IconBrandGithub, IconBrandSnapchat, IconBrandInstagram, IconAt } from '@tabler/icons-vue'
+import { IconBrandGithub, IconBrandInstagram, IconAt } from '@tabler/icons-vue'
 import ParticleCanvas from '../components/Content/ParticleCanvas.vue'
 import HandwrittenName from '../components/Content/HandwrittenName.vue'
 import NavBar from '../components/Header/NavBar.vue'
