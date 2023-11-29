@@ -1,5 +1,5 @@
 <template>
-  <NavBar />
+  <NavBar /> 
   <div class="hero min-h-screen">
     <ParticleCanvas class="top-0 left-0 w-full h-full blur-sm" />
 
@@ -32,7 +32,7 @@
                     data-name="tyree"
                     data-domain="tyree"
                     data-tld="ca"
-                    onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"
+                    @click.prevent="sendEmail"
                   >
                     <IconAt class="mr-1" />
                   </a>
@@ -99,6 +99,17 @@ import ParticleCanvas from '../components/Content/ParticleCanvas.vue'
 import HandwrittenName from '../components/Content/HandwrittenName.vue'
 import NavBar from '../components/Header/NavBar.vue'
 import Footer from '../components/Footer/Footer.vue'
+import { ref } from 'vue'
+
+const sendEmail = () => {
+  const name = 'tyree+website'
+  const domain = 'tyree'
+  const tld = 'ca'
+  const subject = 'Hello :)'
+  const body = 'Hi Tyree, '
+  const emailAddress = `${name}@${domain}.${tld}`
+  window.location.href = `mailto:${emailAddress}?subject=${subject}&body=${body}`
+}
 </script>
 
 <style scoped>
