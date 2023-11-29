@@ -1,8 +1,7 @@
 <template>
-  <NavBar /> 
+  <ParticleCanvas class="w-full h-full blur-sm" />
+  <NavBar />
   <div class="hero min-h-screen">
-    <ParticleCanvas class="top-0 left-0 w-full h-full blur-sm" />
-
     <div class="hero-content text-center">
       <div class="grid grid-cols-1 gap-3">
         <HandwrittenName class="h-20 place-self-center" />
@@ -45,52 +44,6 @@
       <Footer />
     </div>
   </div>
-  <!-- WIP _______________________________ -->
-  <!-- Social links section -->
-  <!-- <div class="text-base-content">
-          <ul class="list-disc pl-4">
-            <li class="mb-2 flex items-center justify-center">
-              <a
-                href="https://www.snapchat.com/add/tyree-z"
-                class="hover-snapchat flex items-center"
-              >
-                <IconBrandSnapchat class="mr-1" />
-                tyree-z
-              </a>
-            </li>
-            <li class="mb-2 flex items-center justify-center">
-              <a href="https://git.io/JDv5M" class="hover-github flex items-center">
-                <IconBrandGithub class="mr-1" />
-                tyree-z
-              </a>
-            </li>
-            <li class="mb-2 flex items-center justify-center">
-              <a
-                href="https://www.instagram.com/tyree.zacharopoulos/"
-                class="hover-instagram flex items-center"
-              >
-                <IconBrandInstagram class="mr-1" />
-                tyree.zacharopoulos
-              </a>
-            </li>
-            <li class="flex items-center justify-center">
-              <a
-                href="#"
-                class="hover-at protectedEmail flex items-center"
-                data-name="tyree"
-                data-domain="tyree"
-                data-tld="ca"
-                onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"
-              >
-                <IconAt class="mr-1" />
-              </a>
-            </li>
-          </ul>
-        </div> -->
-  <!-- </div>
-    </div> -->
-  <!-- <Footer /> -->
-  <!-- </article> -->
 </template>
 
 <script setup>
@@ -99,7 +52,6 @@ import ParticleCanvas from '../components/Content/ParticleCanvas.vue'
 import HandwrittenName from '../components/Content/HandwrittenName.vue'
 import NavBar from '../components/Header/NavBar.vue'
 import Footer from '../components/Footer/Footer.vue'
-import { ref } from 'vue'
 
 const sendEmail = () => {
   const name = 'tyree+website'
