@@ -10,7 +10,11 @@
             <div class="text-base-content">
               <ul class="list-disc pl-4 place-self-center">
                 <li class="mb-2 flex items-center justify-center">
-                  <a href="https://git.io/JDv5M" class="hover-github flex items-center">
+                  <a
+                    href="https://git.io/JDv5M"
+                    class="hover-github flex items-center"
+                    id="viewGithub"
+                  >
                     <IconBrandGithub class="mr-1" />
                     tyree-z
                   </a>
@@ -19,6 +23,7 @@
                   <a
                     href="https://www.instagram.com/tyree.zacharopoulos/"
                     class="hover-instagram flex items-center"
+                    id="viewInstagram"
                   >
                     <IconBrandInstagram class="mr-1" />
                     tyree.zacharopoulos
@@ -28,6 +33,7 @@
                   <a
                     href="#"
                     class="hover-at protectedEmail flex items-center"
+                    id="viewEmail"
                     data-name="tyree"
                     data-domain="tyree"
                     data-tld="ca"

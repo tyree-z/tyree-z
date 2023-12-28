@@ -16,6 +16,7 @@
     "@heroicons/vue": "^2.0.18",
     "@tabler/core": "^1.0.0-beta17",
     "@tabler/icons-vue": "^2.23.0",
+    "@vue/cli-plugin-pwa": "^5.0.8",
     "axios": "^1.6.2",
     "casdoor-vue-sdk": "^1.5.1",
     "gsap": "^3.11.5",
