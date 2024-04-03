@@ -1,5 +1,4 @@
 <template>
-  <NavBar />
   <div class="bg-base-100 p-4"></div>
 </template>
 

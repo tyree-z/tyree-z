@@ -17,7 +17,6 @@ export default {
   mounted() {
     this.canvas = document.getElementById('canvas')
     this.ctx = this.canvas.getContext('2d')
-    // detect if mobile device
     this.isMobile = /Android|webOS|iPhone|iPad|iPod|iOS|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
     )
@@ -50,7 +49,7 @@ export default {
   },
   methods: {
     connectToWebSocket() {
-      const ws = new WebSocket('wss://particles.worker.tyree.ca') // Replace with your WebSocket server URL
+      const ws = new WebSocket('wss://particles.worker.tyree.ca')
 
       ws.onopen = () => {
         console.log('WebSocket connected')
