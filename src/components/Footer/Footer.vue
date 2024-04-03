@@ -27,9 +27,6 @@ export default {
   },
   created() {
     this.fetchLatestCommit()
-    };
-  },
-  created() {
     this.currentYear = new Date().getFullYear().toString();
     this.$nextTick(() => {
       document.getElementById('packageVersion').innerHTML = 'v' + packageJson.version
