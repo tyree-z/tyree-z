@@ -1,6 +1,6 @@
 {
   "name": "tyree-z",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "dev": "vite --host",
@@ -21,6 +21,7 @@
     "casdoor-vue-sdk": "^1.5.1",
     "gsap": "^3.11.5",
     "pinia": "^2.1.6",
+    "tailwindcss": "^3.4.1",
     "vue": "^3.2.47",
     "vue-daisyui-theme-manager": "^0.0.29",
     "vue-inline-svg": "^2.1.3",

@@ -11,6 +11,7 @@ import './styles/app.css'
 // import '@tabler/core/dist/js/tabler.esm.min.js'
 
 import './assets/main.css'
+import './assets/transitions.css'
 
 const app = createApp(App)
 
