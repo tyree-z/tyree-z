@@ -1,22 +1,12 @@
 <template>
-  <footer class="footer footer-transparent d-print-none">
-    <div class="container-xl">
-      <div class="row text-center align-items-center flex-row-reverse">
-        <div class="col-12 col-lg-auto mt-3 mt-lg-0">
-          <ul class="list-inline list-inline-dots mb-0">
-            <li class="list-inline-item shadowText">
-              Copyright © 2023
-              <router-link to="/" class="link-secondary">Tyree Zacharopoulos</router-link> All
-              rights reserved.
-            </li>
-            <li class="list-inline-item">
-              <a class="link-secondary shadowText" rel="noopener"><a id="packageVersion"></a></a>
-            </li>
-            <!-- <li class="list-inline-item">BrowserID: <a id="bFP"></a></li> -->
-          </ul>
-        </div>
-      </div>
-    </div>
+  <footer
+    class="fixed bottom-0 left-0 z-20 w-full p-4 bg-opacity-90 backdrop-blur shadow md:flex md:items-center md:justify-between md:p-4"
+  >
+    <span class="text-xs text-base-content sm:text-center"
+      >© {{ currentYear }} <router-link to="/" class="text-base-content">Tyree Zacharopoulos</router-link>. All
+      Rights Reserved.
+    </span>
+    <span class="text-xs text-base-content sm:text-center"><span id="packageVersion"></span></span>
   </footer>
 </template>
 
@@ -24,7 +14,13 @@
 import packageJson from '../../../package.json'
 export default {
   name: 'FooterComponent',
+  data() {
+    return {
+      currentYear: ''
+    };
+  },
   created() {
+    this.currentYear = new Date().getFullYear().toString();
     this.$nextTick(() => {
       document.getElementById('packageVersion').innerHTML = 'v' + packageJson.version
     })
@@ -34,12 +30,9 @@ export default {
 
 <style scoped>
 .footer {
-  position: fixed;
-  bottom: 0;
   text-decoration: none;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: darkgray;
 }
 </style>

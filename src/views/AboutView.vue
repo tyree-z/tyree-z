@@ -1,16 +1,14 @@
 <template>
-  <div class="about">
-    <h1>lololol</h1>
-  </div>
+  <NavBar />
+  <div class="bg-base-100 p-4"></div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    margin-left: 50%;
-  }
+<script>
+export default {
+  setup() {}
 }
+</script>
+
+<style scoped>
+/* Add Tailwind CSS classes here for enhanced styling */
 </style>
