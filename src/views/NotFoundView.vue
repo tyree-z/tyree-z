@@ -16,27 +16,17 @@ import ParticleCanvas from '../components/Content/ParticleCanvas.vue'
         <ParticleCanvas />
       </canvas>
     </div>
-    <div
-      class="modal modal-blur fade show"
-      id="modal-simple"
-      tabindex="-1"
-      style="display: block"
-      aria-modal="true"
-      role="dialog"
-    >
-      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Not Found 😞</h5>
-          </div>
-          <div class="modal-body">The Page you're looking for was not found. <br /></div>
-          <div class="modal-footer">
-            <router-link to="/">
-              <button type="button" class="btn me-auto" data-bs-dismiss="modal">Go Back</button>
-            </router-link>
-          </div>
+    <dialog class="modal">
+      <div class="modal-box">
+        <h3 class="font-bold text-lg">Hello!</h3>
+        <p class="py-4">Press ESC key or click the button below to close</p>
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+          </form>
         </div>
       </div>
-    </div>
+    </dialog>
   </div>
 </template>
