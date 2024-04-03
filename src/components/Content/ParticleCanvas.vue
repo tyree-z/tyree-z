@@ -1,6 +1,6 @@
 <template>
   <span class="canvasContent">
-    <canvas id="canvas" />
+    <canvas class="z-0 bg-base-100" id="canvas" />
   </span>
 </template>
 
@@ -22,45 +22,87 @@ export default {
       navigator.userAgent
     )
     if (this.isMobile) {
-      console.log('is mobile')
+      console.log('Particles Mode: Mobile')
       this.maxParticles = Math.round(screen.height * 0.055)
       this.ConnectionDist = Math.round(screen.width * 0.3)
     } else {
-      console.log('is not mobile')
+      console.log('Particles Mode: Desktop')
       this.ConnectionDist = Math.round(screen.width * 0.1)
       this.maxParticles = Math.round(screen.height * 0.2)
     }
     this.radius = 2
     this.Msqrt = Math.sqrt
     this.Mrandom = Math.random
-    console.log(`${this.maxParticles} is the particle count`)
-    console.log(`${this.ConnectionDist} is the connection distance between nodes`)
+    console.log(`Particle Count: ${this.maxParticles}`)
+    console.log(`Particle Conn. Distance: ${this.ConnectionDist}`)
     this.handleResize()
     window.addEventListener('resize', this.handleResize)
     this.createParticles()
     this.animate()
-    this.startAPICheck()
-    this.getParticleColor()
+    // From Old HTTP API
+    // this.startAPICheck()
+    // this.getParticleColor()
+    this.connectToWebSocket()
   },
   beforeUnmount() {
     window.removeEventListener('resize', this.handleResize)
     cancelAnimationFrame(this.animation)
   },
   methods: {
-    async startAPICheck() {
-      let previousColor = await this.getParticleColor()
-      setInterval(async () => {
-        const newColor = await this.getParticleColor()
+    connectToWebSocket() {
+      const ws = new WebSocket('wss://particles.worker.tyree.ca') // Replace with your WebSocket server URL
+
+      ws.onopen = () => {
+        console.log('WebSocket connected')
+        this.requestColor(ws)
+      }
+
+      ws.onmessage = (event) => {
+        let previousColor = this.previousParticleColor
+        const data = JSON.parse(event.data)
+        const newColor = data.color
         if (newColor !== previousColor) {
           this.particleColor = newColor
           this.previousParticleColor = previousColor
           previousColor = newColor
           this.transitionColor(previousColor, newColor)
         }
-      }, 5000)
+      }
+
+      ws.onerror = (error) => {
+        console.error('WebSocket error:', error)
+      }
+
+      ws.onclose = () => {
+        console.log('WebSocket closed. Reconnecting...')
+        setTimeout(() => {
+          this.connectToWebSocket()
+        }, 3000)
+      }
     },
+
+    requestColor(ws) {
+      setInterval(() => {
+        ws.send('pcolor')
+      }, 3000)
+    },
+
+    // From Old HTTP API
+    // async startAPICheck() {
+    //   let previousColor = await this.getParticleColor()
+    //   setInterval(async () => {
+    //     const newColor = await this.getParticleColor()
+    //     if (newColor !== previousColor) {
+    //       this.particleColor = newColor
+    //       this.previousParticleColor = previousColor
+    //       previousColor = newColor
+    //       this.transitionColor(previousColor, newColor)
+    //     }
+    //   }, 10000)
+    // },
+
     transitionColor(startColor, endColor) {
-      const animationDuration = 1000 // Duration of the color transition in milliseconds
+      const animationDuration = 500 // Duration of the color transition in milliseconds
       const framesPerSecond = 60 // Number of frames per second for the transition animation
       const frameDuration = 1000 / framesPerSecond
       const colorIncrement = (endColor - startColor) / (animationDuration / frameDuration)
@@ -92,23 +134,24 @@ export default {
       })
     },
 
-    async getParticleColor() {
-      try {
-        const response = await fetch('https://particles.falkor.workers.dev/')
-        const data = await response.json()
-        console.log(data)
-        this.particleColor = data.color
-        console.log(this.particleColor)
+    // From Old HTTP API
+    // async getParticleColor() {
+    //   try {
+    //     const response = await fetch('https://particles.worker.tyree.ca/')
+    //     const data = await response.json()
+    //     this.particleColor = data.color
+    //     console.log(`Particle HSLA Color: ${data.color}`)
 
-        if (this.particleColor !== this.previousParticleColor) {
-          this.previousParticleColor = this.particleColor
-          this.updateParticleColors()
-        }
-      } catch (error) {
-        console.log(error)
-        this.particleColor = 360
-      }
-    },
+    //     if (this.particleColor !== this.previousParticleColor) {
+    //       this.previousParticleColor = this.particleColor
+    //       this.updateParticleColors()
+    //     }
+    //   } catch (error) {
+    //     console.log(error)
+    //     this.particleColor = 360
+    //   }
+    // },
+
     updateParticleColors() {
       this.particles.forEach((particle) => {
         particle.strokeColour.h = this.particleColor
@@ -118,8 +161,7 @@ export default {
       const dpr = window.devicePixelRatio
       this.ctx.scale(dpr, dpr)
       this.w = this.canvas.width = window.innerWidth
-      this.h = this.canvas.height =
-        window.innerHeight - document.getElementsByClassName('navbar')[0].clientHeight
+      this.h = this.canvas.height = window.innerHeight
       this.midX = this.w * 0
     },
     createParticles() {
@@ -185,6 +227,7 @@ export default {
               ', 65%, 45%, ' +
               (1 - (currentDist * 100) / this.ConnectionDist / 100) +
               ')'
+            this.ctx.lineWidth = 2
             this.ctx.lineTo(p2.x, p2.y)
             this.ctx.stroke()
           }
@@ -237,6 +280,9 @@ export default {
 
 <style scoped>
 canvas {
-  background-color: black;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
 }
 </style>

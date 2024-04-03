@@ -6,8 +6,9 @@ import { InlineSvgPlugin } from 'vue-inline-svg'
 import App from './App.vue'
 import router from './router'
 
-import '@tabler/core/dist/css/tabler.min.css'
-import '@tabler/core/dist/js/tabler.esm.min.js'
+import './styles/app.css'
+// import '@tabler/core/dist/css/tabler.min.css'
+// import '@tabler/core/dist/js/tabler.esm.min.js'
 
 import './assets/main.css'
 
@@ -30,4 +31,4 @@ app.use(
   })
 )
 
-app.mount('#page')
+app.mount('#application')
