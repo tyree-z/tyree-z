@@ -22,8 +22,8 @@ export default {
     )
     if (this.isMobile) {
       console.log('Particles Mode: Mobile')
-      this.ConnectionDist = Math.round(screen.width * 0.3)
-      this.maxParticles = Math.round(screen.height * 0.070)
+      this.ConnectionDist = Math.round(screen.width * 0.18)
+      this.maxParticles = Math.round(screen.height * 0.090)
     } else {
       console.log('Particles Mode: Desktop')
       this.ConnectionDist = Math.round(screen.width * 0.040)
