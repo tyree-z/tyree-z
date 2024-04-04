@@ -7,11 +7,7 @@ import App from './App.vue'
 import router from './router'
 
 import './styles/app.css'
-// import '@tabler/core/dist/css/tabler.min.css'
-// import '@tabler/core/dist/js/tabler.esm.min.js'
-
-import './assets/main.css'
-import './assets/transitions.css'
+import './styles/main.css'
 
 const app = createApp(App)
 

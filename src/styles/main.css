@@ -1,0 +1,71 @@
+/*Tyree Zacharopoulos - 01/18/2021*/
+
+@import './transitions.css';
+
+@font-face {
+  font-family: 'Moon';
+  src: url('https://r2.tyree.ca/root/fonts/Moon_Light.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Moon';
+  font-weight: bold;
+  src: url('https://r2.tyree.ca/root/fonts/Moon_Bold.otf') format('opentype');
+  font-display: swap;
+}
+
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+/*Mobile Devices*/
+/* @media (max-width: 500px) {
+  .name {
+    font-size: 150%;
+  }
+
+  .bShelf {
+    font-size: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+} */
+
+/*the low res bois devices*/
+/* @media (max-width: 200px) {
+  .name {
+    font-size: 80%;
+  }
+
+  .bShelf {
+    font-size: 7px;
+    white-space: normal;
+    line-height: 13px;
+    overflow: inherit;
+  }
+
+  .mainContent {
+    right: 50px;
+    left: 20px;
+  }
+} */
+
+/**super low res bois*/
+/* @media (max-width: 160px) {
+  .name {
+    font-size: 40%;
+  }
+
+  .bShelf {
+    font-size: 4px;
+    left: -20%;
+    position: absolute;
+  }
+
+  .mainContent {
+    right: 50px;
+    left: 20px;
+  }
+} */

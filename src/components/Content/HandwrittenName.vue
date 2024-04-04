@@ -250,6 +250,9 @@
 </template>
 
 <style>
+svg {
+filter: drop-shadow(0 0 0.70rem rgb(0, 0, 0));
+}
 @-webkit-keyframes animate-svg-stroke-1 {
   0% {
     stroke-dashoffset: 862.5628051757812px;
