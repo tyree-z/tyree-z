@@ -14,18 +14,18 @@ const app = createApp(App)
 app.use(router)
 app.use(createPinia())
 app.use(InlineSvgPlugin)
-app.use(
-  createAuth0({
-    domain: 'tyreeapi.us.auth0.com',
-    clientId: 'ceKocopv5OI9XdsDt1Zqqvj4WOeqLNLL',
-    useRefreshTokens: true,
-    cacheLocation: 'localstorage',
-    authorizationParams: {
-      redirect_uri: window.location.origin,
-      audience: 'https://api.dev.tyree.ca/',
-      scope: 'openid profile email offline_access schedules'
-    }
-  })
-)
+// app.use(
+//   createAuth0({
+//     domain: 'tyreeapi.us.auth0.com',
+//     clientId: 'ceKocopv5OI9XdsDt1Zqqvj4WOeqLNLL',
+//     useRefreshTokens: true,
+//     cacheLocation: 'localstorage',
+//     authorizationParams: {
+//       redirect_uri: window.location.origin,
+//       audience: 'https://api.dev.tyree.ca/',
+//       scope: 'openid profile email offline_access schedules'
+//     }
+//   })
+// )
 
 app.mount('#application')
