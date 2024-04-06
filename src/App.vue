@@ -1,9 +1,8 @@
 <template>
-  <transition name="fade">
-    <div v-if="!loaded && !initialLoad" class="loading-screen">
-      <span class="loading loading-ring loading-lg text-accent"></span>
+  <transition name="loading-screen">
+    <div v-if="!loaded" class="loading-screen">
+      <span class="loading loading-spinner"></span>
     </div>
-    <!-- TODO Optimize Loading Screen / Entry Point Into App -->
     <div v-else class="bg-base-300">
       <router-view v-slot="{ Component }">
         <component :is="Component" />
@@ -32,7 +31,6 @@ onMounted(() => {
 <style>
 .loading-screen {
   opacity: 1;
-  transition: opacity 1s ease-out;
   position: fixed;
   top: 0;
   left: 0;

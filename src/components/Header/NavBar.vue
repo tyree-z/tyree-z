@@ -6,9 +6,9 @@
       </div>
     </div>
     <div class="navbar-center"></div>
-    <!-- <div class="navbar-end">
-      <div class="dropdown dropdown-end">
-        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+    <div class="navbar-end">
+      <!-- <div class="dropdown dropdown-end">
+        <label tabindex="0" class="avatar">
           <div class="w-10 rounded-full">
             <img alt="User Avatar" src="https://github.com/tyree-z.png" />
           </div>
@@ -26,8 +26,8 @@
           <li><a>Settings</a></li>
           <li><a>Logout</a></li>
         </ul>
-      </div>
-    </div> -->
+      </div> -->
+    </div>
   </div>
 </template>
 

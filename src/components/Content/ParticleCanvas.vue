@@ -22,11 +22,11 @@ export default {
     )
     if (this.isMobile) {
       console.log('Particles Mode: Mobile')
-      this.maxParticles = Math.round(screen.height * 0.055)
-      this.ConnectionDist = Math.round(screen.width * 0.3)
+      this.ConnectionDist = Math.round(screen.width * 0.18)
+      this.maxParticles = Math.round(screen.height * 0.090)
     } else {
       console.log('Particles Mode: Desktop')
-      this.ConnectionDist = Math.round(screen.width * 0.1)
+      this.ConnectionDist = Math.round(screen.width * 0.040)
       this.maxParticles = Math.round(screen.height * 0.2)
     }
     this.radius = 2
@@ -52,7 +52,7 @@ export default {
       const ws = new WebSocket('wss://particles.worker.tyree.ca')
 
       ws.onopen = () => {
-        console.log('WebSocket connected')
+        console.log('Particle WS Connected')
         this.requestColor(ws)
       }
 
@@ -73,7 +73,7 @@ export default {
       }
 
       ws.onclose = () => {
-        console.log('WebSocket closed. Reconnecting...')
+        console.log('Particle WS Disconnected')
         setTimeout(() => {
           this.connectToWebSocket()
         }, 3000)

@@ -38,3 +38,19 @@
   opacity: 0;
   transform: scale(0.3) translateY(-50%);
 }
+
+/* Loading Screen */
+
+.loading-screen-enter-from,
+.loading-screen-leave-to {
+  opacity: 0;
+}
+.loading-screen-enter-to,
+.loading-screen-leave-from {
+  opacity: 1;
+}
+
+.loading-screen-enter-active,
+.loading-screen-leave-active {
+  transition: opacity 0.4s ease-out;
+}
