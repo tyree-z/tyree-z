@@ -37,12 +37,10 @@ export default {
     async fetchLatestCommit() {
       try {
         // Get em
-        const response = await axios.get('https://api.github.com/repos/tyree-z/tyree-z/commits')
-        const latestCommitSha = response.data[0].sha
-        const latestCommitHtmlUrl = response.data[0].html_url
+        const response = await axios.get('https://api.tyree.ca/v1/website/git/latestcommit')
         // Set em
-        this.latestCommitHash = latestCommitSha.slice(0, 7) // Displaying first 7 characters of SHA as version
-        this.latestCommitUrl = latestCommitHtmlUrl
+        this.latestCommitHash = response.data.short_hash // Displaying first 7 characters of SHA as version
+        this.latestCommitUrl = response.data.url
       } catch (error) {
         console.error('Error fetching latest commit:', error)
       }
