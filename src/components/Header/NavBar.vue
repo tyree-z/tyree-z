@@ -2,7 +2,9 @@
   <div class="navbar sticky top-0 bg-opacity-90 backdrop-blur">
     <div class="navbar-start">
       <div class="flex-1">
-        <HandwrittenName class="btn btn-sm btn-ghost text-sm h-10 w-20 p-2" />
+        <router-link to="/">
+          <HandwrittenName class="btn btn-sm btn-ghost text-sm h-10 w-20 p-2" />
+        </router-link>
       </div>
     </div>
     <div class="navbar-center"></div>
