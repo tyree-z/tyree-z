@@ -10,7 +10,6 @@
 }
 
 /* Fade */
-
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
@@ -40,7 +39,6 @@
 }
 
 /* Loading Screen */
-
 .loading-screen-enter-from,
 .loading-screen-leave-to {
   opacity: 0;

@@ -46,7 +46,7 @@
               </div>
               <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-base-300">
-                  <thead class="bg-base-200">
+                  <thead class="bg-base-100">
                     <tr>
                       <th
                         class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider"
@@ -83,7 +83,7 @@
                       <td class="px-6 py-4 whitespace-nowrap">{{ job.location }}</td>
                       <td class="px-6 py-4 whitespace-nowrap">
                         <button
-                          @click="openModal(job.id)"
+                          @click="openModal(job)"
                           type="button"
                           class="inline-flex items-center justify-center rounded-md bg-blue-500 hover:bg-blue-600 text-white font-medium px-4 py-2 text-sm transition duration-150 ease-in-out"
                         >
@@ -94,57 +94,80 @@
                   </tbody>
                 </table>
               </div>
-              <dialog
-                v-for="job in jobs"
-                :key="job.id"
-                :id="job.id"
-                class="relative z-10"
-                aria-labelledby="modal-title"
-                role="dialog"
-                aria-modal="true"
-              >
-                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-                <div class="fixed z-10 inset-0 overflow-y-auto">
-                  <div
-                    class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0"
-                  >
-                    <div
-                      class="relative bg-neutral rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full"
-                    >
-                      <div class="bg-neutral px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                        <div class="sm:flex sm:items-start">
-                          <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                            <h3 class="text-lg font-medium text-base-content" id="modal-title">
-                              {{ job.company }}
-                            </h3>
-                            <div class="mt-2">
-                              <p class="text-sm text-base-content">{{ job.modalContent }}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="bg-neutral px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                        <button
-                          @click="closeModal(job.id)"
-                          type="button"
-                          class="mt-3 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-base-200 text-base font-medium text-base-content hover:bg-base-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
-                        >
-                          Close
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </dialog>
             </div>
           </div>
         </div>
       </section>
     </div>
+
+    <!-- Modal Dialogs -->
+    <dialog
+      v-for="job in jobs"
+      :key="job.id"
+      :id="job.id"
+      class="relative z-10"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+      @click.self="closeModal(job)"
+    >
+      <div class="fixed inset-0 bg-base-300 bg-opacity-80 transition-opacity"></div>
+      <div class="fixed z-10 inset-0 overflow-y-auto">
+        <div
+          class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0"
+        >
+          <div
+            class="max-w-3xl relative bg-neutral rounded-xl text-left overflow-hidden shadow-xl transform transition-all"
+          >
+            <div class="bg-neutral px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:items-start">
+                <div class="mt-5 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                  <h1 class="text-xl font-medium text-primary" id="modal-title">
+                    {{ job.company }}
+                  </h1>
+                  <p class="text-xs text-base-content">{{ job.location }}</p>
+                  <div class="mt-1">
+                    <p class="text-sm text-base-content font-semibold">
+                      {{ job.modalContent.company_subtext }}
+                    </p>
+                  </div>
+                  <div class="mt-5">
+                    <h4 class="text-accent font-semibold mb-1">Description</h4>
+                    <p class="text-sm text-base-content">{{ job.modalContent.description }}</p>
+                  </div>
+                  <div class="mt-5">
+                    <h4 class="text-accent font-semibold mb-1">Skills</h4>
+                    <ul class="list-disc list-inside text-sm">
+                      <li
+                        v-for="skill in job.modalContent.skills"
+                        :key="skill"
+                        class="text-base-content"
+                      >
+                        {{ skill }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-neutral px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+              <button
+                @click="closeModal(job)"
+                type="button"
+                class="mt-3 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-base-200 text-base font-medium text-base-content hover:bg-base-100 sm:ml-3 sm:w-auto sm:text-sm"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </dialog>
   </main>
 </template>
 
 <script>
+import axios from 'axios'
 import NavBar from '../components/Header/NavBar.vue'
 
 export default {
@@ -153,59 +176,28 @@ export default {
   },
   data() {
     return {
-      jobs: [
-        {
-          id: 'theos',
-          company: 'Theos Restaurant',
-          position: 'Dishwasher',
-          duration: '2017 – 2019',
-          location: 'Penticton, BC',
-          modalContent: 'Details about my work at Theos Restaurant...'
-        },
-        {
-          id: 'apps',
-          company: 'Apex Premier Property Services',
-          position: 'Landscaping',
-          duration: '2019 – 2020',
-          location: 'Penticton, BC',
-          modalContent: 'Details about my work at Apex Premier Property Services...'
-        },
-        {
-          id: 'jrmill',
-          company: 'J&R Millwork Ltd',
-          position: 'Manufacturing',
-          duration: '2020 – 2021',
-          location: 'West Kelowna, BC',
-          modalContent: 'Details about my work at J&R Millwork Ltd...'
-        },
-        {
-          id: 'qualitymovers',
-          company: 'Quality Movers',
-          position: 'Labourer',
-          duration: '2020 – 2021',
-          location: 'Summerland, BC',
-          modalContent: 'Details about my work at Quality Movers...'
-        },
-        {
-          id: 'neighbourhoodbrew',
-          company: 'Neighbourhood Brewing Company',
-          position: 'Kitchen Helper',
-          duration: '2021 – Current',
-          location: 'Penticton, BC',
-          modalContent: 'Details about my work at Neighbourhood Brewing Company...'
-        }
-      ]
+      jobs: []
     }
   },
+  mounted() {
+    axios
+      .get('https://api.tyree.ca/v1/website/cv/data')
+      .then((response) => {
+        this.jobs = response.data.jobs
+      })
+      .catch((error) => {
+        console.error('Error fetching resume data:', error)
+      })
+  },
   methods: {
-    openModal(jobId) {
-      const modal = document.getElementById(jobId)
+    openModal(job) {
+      const modal = document.getElementById(job.id)
       if (modal) {
         modal.showModal()
       }
     },
-    closeModal(jobId) {
-      const modal = document.getElementById(jobId)
+    closeModal(job) {
+      const modal = document.getElementById(job.id)
       if (modal) {
         modal.close()
       }
