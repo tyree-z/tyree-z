@@ -15,7 +15,7 @@
                     class="flex items-center heroSocialLink"
                     id="viewGithub"
                   >
-                    <IconBrandGithub class="mr-1 hover-github" />
+                    <IconBrandGithub :size="24" :stroke-width="1.5" class="mr-1 hover-github" />
                     <p>tyree-z</p>
                   </a>
                 </li>
@@ -25,7 +25,11 @@
                     class="flex items-center heroSocialLink"
                     id="viewInstagram"
                   >
-                    <IconBrandInstagram class="mr-1 hover-instagram" />
+                    <IconBrandInstagram
+                      :size="24"
+                      :stroke-width="1.5"
+                      class="mr-1 hover-instagram"
+                    />
                     <p>tyree.zacharopoulos</p>
                   </a>
                 </li>
@@ -39,7 +43,7 @@
                     data-tld="ca"
                     @click.prevent="sendEmail"
                   >
-                    <IconAt class="mr-1 hover-at" />
+                    <IconAt :size="24" :stroke-width="1.5" class="mr-1 hover-at" />
                   </a>
                 </li>
               </ul>
@@ -67,7 +71,7 @@ const sendEmail = () => {
   const body = 'Hi Tyree, '
   const emailAddress = `${name}@${domain}.${tld}`
   // Ask User If They Want To Open Their Mail Client.. Prevent Annoying Mis-Clicks
-  if (confirm("Open your Email?") == true) {
+  if (confirm('Open your Email?') == true) {
     window.location.href = `mailto:${emailAddress}?subject=${subject}&body=${body}`
   } else {
     console.log('Cancelled "mailto:" prompt')
