@@ -15,9 +15,9 @@ RUN npm run build
 # Expose
 FROM nginx:stable
 COPY --from=build-stage --chown=appuser:appuser /app/dist /usr/share/nginx/html
-EXPOSE 80
+EXPOSE 3000
 
 # Healthcheck
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 CMD curl --fail http://localhost:80 || exit 1
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 CMD curl --fail http://localhost:3000 || exit 1
 
 CMD ["nginx", "-g", "daemon off;"]
