@@ -8,7 +8,7 @@
         <div class="max-w-md place-self-center">
           <div class="py-6">
             <div class="text-base-content">
-              <ul class="list-disc pl-4 place-self-center prevent-select">
+              <ul class="list-disc place-self-center prevent-select">
                 <li class="mb-2 flex items-center justify-center">
                   <a
                     href="https://git.io/JDv5M"
@@ -81,7 +81,7 @@ const sendEmail = () => {
 
 <style scoped>
 /*
-This Is Here So They Can Fade Out.. "p:hover" Cuts Out As Soon As Cursor Leaves "p"
+This Is Here So "p" Can Fade Out.. "p:hover" Cuts Out As Soon As Cursor Leaves "p"
 */
 p {
   transition: 0.7s;
