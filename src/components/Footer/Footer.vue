@@ -1,21 +1,17 @@
 <template>
-  <footer
-    class="fixed bottom-0 left-0 z-20 w-full p-4 bg-opacity-90 backdrop-blur shadow md:flex md:items-center md:justify-between md:p-4"
-  >
+  <footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-opacity-90 backdrop-blur shadow md:flex md:items-center md:justify-between md:p-4">
     <span class="text-xs text-base-content sm:text-center prevent-select"
-      >© {{ currentYear }} <router-link to="/" class="text-base-content">Tyree Zacharopoulos</router-link>. All
-      Rights Reserved.
+      >© {{ currentYear }} <router-link to="/" class="text-base-content">Tyree Zacharopoulos</router-link>. All Rights Reserved.
     </span>
     <span class="text-xs text-base-content sm:text-center prevent-select"
-      ><span id="packageVersion"></span
-      ><a id="commitHash" :href="latestCommitUrl"> - {{ latestCommitHash }}</a></span
+      ><span id="packageVersion"></span><a id="commitHash" :href="latestCommitUrl"> - {{ latestCommitHash }}</a></span
     >
   </footer>
 </template>
 
 <script>
-import axios from 'axios'
-import packageJson from '../../../package.json'
+import axios from 'axios';
+import packageJson from '../../../package.json';
 export default {
   name: 'FooterComponent',
   data() {
@@ -23,30 +19,30 @@ export default {
       latestCommitHash: '',
       latestCommitUrl: '',
       currentYear: ''
-    }
+    };
   },
   created() {
-    this.fetchLatestCommit()
+    this.fetchLatestCommit();
     this.currentYear = new Date().getFullYear().toString();
     this.$nextTick(() => {
-      document.getElementById('packageVersion').innerHTML = 'v' + packageJson.version
-      document.getElementById('commitHash').innerHTML = ' - ' + this.latestCommitHash
-    })
+      document.getElementById('packageVersion').innerHTML = 'v' + packageJson.version;
+      document.getElementById('commitHash').innerHTML = ' - ' + this.latestCommitHash;
+    });
   },
   methods: {
     async fetchLatestCommit() {
       try {
         // Get em
-        const response = await axios.get('https://api.tyree.ca/v1/website/git/latestcommit')
+        const response = await axios.get('https://api.tyree.ca/v1/website/git/latestcommit');
         // Set em
-        this.latestCommitHash = response.data.short_hash // Displaying first 7 characters of SHA as version
-        this.latestCommitUrl = response.data.url
+        this.latestCommitHash = response.data.short_hash; // Displaying first 7 characters of SHA as version
+        this.latestCommitUrl = response.data.url;
       } catch (error) {
-        console.error('Error fetching latest commit:', error)
+        console.error('Error fetching latest commit:', error);
       }
     }
   }
-}
+};
 </script>
 
 <style scoped>

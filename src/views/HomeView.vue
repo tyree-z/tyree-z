@@ -10,26 +10,14 @@
             <div class="text-base-content">
               <ul class="list-disc place-self-center prevent-select">
                 <li class="mb-2 flex items-center justify-center">
-                  <a
-                    href="https://git.io/JDv5M"
-                    class="flex items-center heroSocialLink"
-                    id="viewGithub"
-                  >
+                  <a href="https://git.io/JDv5M" class="flex items-center heroSocialLink" id="viewGithub">
                     <IconBrandGithub :size="24" :stroke-width="1.5" class="mr-1 hover-github" />
                     <p>tyree-z</p>
                   </a>
                 </li>
                 <li class="mb-2 flex items-center justify-center">
-                  <a
-                    href="https://www.instagram.com/tyree.zacharopoulos/"
-                    class="flex items-center heroSocialLink"
-                    id="viewInstagram"
-                  >
-                    <IconBrandInstagram
-                      :size="24"
-                      :stroke-width="1.5"
-                      class="mr-1 hover-instagram"
-                    />
+                  <a href="https://www.instagram.com/tyree.zacharopoulos/" class="flex items-center heroSocialLink" id="viewInstagram">
+                    <IconBrandInstagram :size="24" :stroke-width="1.5" class="mr-1 hover-instagram" />
                     <p>tyree.zacharopoulos</p>
                   </a>
                 </li>
@@ -57,26 +45,26 @@
 </template>
 
 <script setup>
-import { IconBrandGithub, IconBrandInstagram, IconAt } from '@tabler/icons-vue'
-import ParticleCanvas from '../components/Content/ParticleCanvas.vue'
-import HandwrittenName from '../components/Content/HandwrittenName.vue'
-import NavBar from '../components/Header/NavBar.vue'
-import Footer from '../components/Footer/Footer.vue'
+import { IconBrandGithub, IconBrandInstagram, IconAt } from '@tabler/icons-vue';
+import ParticleCanvas from '../components/Content/ParticleCanvas.vue';
+import HandwrittenName from '../components/Content/HandwrittenName.vue';
+import NavBar from '../components/Header/NavBar.vue';
+import Footer from '../components/Footer/Footer.vue';
 
 const sendEmail = () => {
-  const name = 'tyree+website'
-  const domain = 'tyree'
-  const tld = 'ca'
-  const subject = 'Hello :)'
-  const body = 'Hi Tyree, '
-  const emailAddress = `${name}@${domain}.${tld}`
+  const name = 'tyree+website';
+  const domain = 'tyree';
+  const tld = 'ca';
+  const subject = 'Hello :)';
+  const body = 'Hi Tyree, ';
+  const emailAddress = `${name}@${domain}.${tld}`;
   // Ask User If They Want To Open Their Mail Client.. Prevent Annoying Mis-Clicks
   if (confirm('Open your Email?') == true) {
-    window.location.href = `mailto:${emailAddress}?subject=${subject}&body=${body}`
+    window.location.href = `mailto:${emailAddress}?subject=${subject}&body=${body}`;
   } else {
-    console.log('Cancelled "mailto:" prompt')
+    console.log('Cancelled "mailto:" prompt');
   }
-}
+};
 </script>
 
 <style scoped>

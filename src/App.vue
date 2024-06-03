@@ -12,20 +12,18 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { RouterView } from 'vue-router'
+import { ref, onMounted } from 'vue';
+import { RouterView } from 'vue-router';
 
-const loaded = ref(false)
+const loaded = ref(false);
 
 onMounted(() => {
-  console.log(
-    `Client device in dark mode: ${window.matchMedia('(prefers-color-scheme: dark)').matches}`
-  )
+  console.log(`Client device in dark mode: ${window.matchMedia('(prefers-color-scheme: dark)').matches}`);
 
   setTimeout(() => {
-    loaded.value = true
-  }, 1000)
-})
+    loaded.value = true;
+  }, 1000);
+});
 </script>
 
 <style>

@@ -13,26 +13,17 @@
             <h3 class="text-lg font-semibold mb-4">Contact</h3>
             <ul>
               <li class="mb-2">
-                <a
-                  href="tel:+17785319012"
-                  class="text-blue-500 hover:text-blue-700 flex items-center"
-                >
+                <a href="tel:+17785319012" class="text-blue-500 hover:text-blue-700 flex items-center">
                   <i class="ti ti-phone-call text-lg mr-2"></i>+1 (778) 531 9012
                 </a>
               </li>
               <li class="mb-2">
-                <a
-                  href="mailto:tyree@tyree.ca"
-                  class="text-blue-500 hover:text-blue-700 flex items-center"
-                >
+                <a href="mailto:tyree@tyree.ca" class="text-blue-500 hover:text-blue-700 flex items-center">
                   <i class="ti ti-mail text-lg mr-2"></i>tyree@tyree.ca
                 </a>
               </li>
               <li>
-                <a
-                  href="https://tyree.ca"
-                  class="text-blue-500 hover:text-blue-700 flex items-center"
-                >
+                <a href="https://tyree.ca" class="text-blue-500 hover:text-blue-700 flex items-center">
                   <i class="ti ti-world text-lg mr-2"></i>tyree.ca
                 </a>
               </li>
@@ -48,31 +39,11 @@
                 <table class="min-w-full divide-y divide-base-300">
                   <thead class="bg-base-100">
                     <tr>
-                      <th
-                        class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider"
-                      >
-                        Company
-                      </th>
-                      <th
-                        class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider"
-                      >
-                        Position
-                      </th>
-                      <th
-                        class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider"
-                      >
-                        Duration
-                      </th>
-                      <th
-                        class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider"
-                      >
-                        Location
-                      </th>
-                      <th
-                        class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider"
-                      >
-                        Details
-                      </th>
+                      <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Company</th>
+                      <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Position</th>
+                      <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Duration</th>
+                      <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Location</th>
+                      <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Details</th>
                     </tr>
                   </thead>
                   <tbody class="bg-neutral divide-y divide-base-300">
@@ -113,12 +84,8 @@
     >
       <div class="fixed inset-0 bg-base-300 bg-opacity-80 transition-opacity"></div>
       <div class="fixed z-10 inset-0 overflow-y-auto">
-        <div
-          class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0"
-        >
-          <div
-            class="max-w-3xl relative bg-neutral rounded-xl text-left overflow-hidden shadow-xl transform transition-all"
-          >
+        <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+          <div class="max-w-3xl relative bg-neutral rounded-xl text-left overflow-hidden shadow-xl transform transition-all">
             <div class="bg-neutral px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <div class="sm:flex sm:items-start">
                 <div class="mt-5 text-center sm:mt-0 sm:ml-4 sm:text-left">
@@ -138,11 +105,7 @@
                   <div class="mt-5">
                     <h4 class="text-accent font-semibold mb-1">Skills</h4>
                     <ul class="list-disc list-inside text-sm">
-                      <li
-                        v-for="skill in job.modalContent.skills"
-                        :key="skill"
-                        class="text-base-content"
-                      >
+                      <li v-for="skill in job.modalContent.skills" :key="skill" class="text-base-content">
                         {{ skill }}
                       </li>
                     </ul>
@@ -167,8 +130,8 @@
 </template>
 
 <script>
-import axios from 'axios'
-import NavBar from '../components/Header/NavBar.vue'
+import axios from 'axios';
+import NavBar from '../components/Header/NavBar.vue';
 
 export default {
   components: {
@@ -177,31 +140,31 @@ export default {
   data() {
     return {
       jobs: []
-    }
+    };
   },
   mounted() {
     axios
       .get('https://api.tyree.ca/v1/website/cv/data')
       .then((response) => {
-        this.jobs = response.data.jobs
+        this.jobs = response.data.jobs;
       })
       .catch((error) => {
-        console.error('Error fetching resume data:', error)
-      })
+        console.error('Error fetching resume data:', error);
+      });
   },
   methods: {
     openModal(job) {
-      const modal = document.getElementById(job.id)
+      const modal = document.getElementById(job.id);
       if (modal) {
-        modal.showModal()
+        modal.showModal();
       }
     },
     closeModal(job) {
-      const modal = document.getElementById(job.id)
+      const modal = document.getElementById(job.id);
       if (modal) {
-        modal.close()
+        modal.close();
       }
     }
   }
-}
+};
 </script>

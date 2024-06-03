@@ -10,80 +10,78 @@ export default {
     particleColor(newValue, oldValue) {
       if (newValue !== oldValue) {
         // Color has changed, initiate a gradual transition
-        this.transitionColor(oldValue, newValue)
+        this.transitionColor(oldValue, newValue);
       }
     }
   },
   mounted() {
-    this.canvas = document.getElementById('canvas')
-    this.ctx = this.canvas.getContext('2d')
-    this.isMobile = /Android|webOS|iPhone|iPad|iPod|iOS|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    )
+    this.canvas = document.getElementById('canvas');
+    this.ctx = this.canvas.getContext('2d');
+    this.isMobile = /Android|webOS|iPhone|iPad|iPod|iOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     if (this.isMobile) {
-      console.log('Particles Mode: Mobile')
-      this.ConnectionDist = Math.round(screen.width * 0.18)
-      this.maxParticles = Math.round(screen.height * 0.090)
+      console.log('Particles Mode: Mobile');
+      this.ConnectionDist = Math.round(screen.width * 0.18);
+      this.maxParticles = Math.round(screen.height * 0.09);
     } else {
-      console.log('Particles Mode: Desktop')
-      this.ConnectionDist = Math.round(screen.width * 0.040)
-      this.maxParticles = Math.round(screen.height * 0.2)
+      console.log('Particles Mode: Desktop');
+      this.ConnectionDist = Math.round(screen.width * 0.04);
+      this.maxParticles = Math.round(screen.height * 0.2);
     }
-    this.radius = 2
-    this.Msqrt = Math.sqrt
-    this.Mrandom = Math.random
-    console.log(`Particle Count: ${this.maxParticles}`)
-    console.log(`Particle Conn. Distance: ${this.ConnectionDist}`)
-    this.handleResize()
-    window.addEventListener('resize', this.handleResize)
-    this.createParticles()
-    this.animate()
+    this.radius = 2;
+    this.Msqrt = Math.sqrt;
+    this.Mrandom = Math.random;
+    console.log(`Particle Count: ${this.maxParticles}`);
+    console.log(`Particle Conn. Distance: ${this.ConnectionDist}`);
+    this.handleResize();
+    window.addEventListener('resize', this.handleResize);
+    this.createParticles();
+    this.animate();
     // From Old HTTP API
     // this.startAPICheck()
     // this.getParticleColor()
-    this.connectToWebSocket()
+    this.connectToWebSocket();
   },
   beforeUnmount() {
-    window.removeEventListener('resize', this.handleResize)
-    cancelAnimationFrame(this.animation)
+    window.removeEventListener('resize', this.handleResize);
+    cancelAnimationFrame(this.animation);
   },
   methods: {
     connectToWebSocket() {
-      const ws = new WebSocket('wss://particles.worker.tyree.ca')
+      const ws = new WebSocket('wss://particles.worker.tyree.ca');
 
       ws.onopen = () => {
-        console.log('Particle WS Connected')
-        this.requestColor(ws)
-      }
+        console.log('Particle WS Connected');
+        this.requestColor(ws);
+      };
 
       ws.onmessage = (event) => {
-        let previousColor = this.previousParticleColor
-        const data = JSON.parse(event.data)
-        const newColor = data.color
+        let previousColor = this.previousParticleColor;
+        const data = JSON.parse(event.data);
+        const newColor = data.color;
         if (newColor !== previousColor) {
-          this.particleColor = newColor
-          this.previousParticleColor = previousColor
-          previousColor = newColor
-          this.transitionColor(previousColor, newColor)
+          this.particleColor = newColor;
+          this.previousParticleColor = previousColor;
+          previousColor = newColor;
+          this.transitionColor(previousColor, newColor);
         }
-      }
+      };
 
       ws.onerror = (error) => {
-        console.error('WebSocket error:', error)
-      }
+        console.error('WebSocket error:', error);
+      };
 
       ws.onclose = () => {
-        console.log('Particle WS Disconnected')
+        console.log('Particle WS Disconnected');
         setTimeout(() => {
-          this.connectToWebSocket()
-        }, 3000)
-      }
+          this.connectToWebSocket();
+        }, 3000);
+      };
     },
 
     requestColor(ws) {
       setInterval(() => {
-        ws.send('pcolor')
-      }, 3000)
+        ws.send('pcolor');
+      }, 3000);
     },
 
     // From Old HTTP API
@@ -101,36 +99,33 @@ export default {
     // },
 
     transitionColor(startColor, endColor) {
-      const animationDuration = 500 // Duration of the color transition in milliseconds
-      const framesPerSecond = 60 // Number of frames per second for the transition animation
-      const frameDuration = 1000 / framesPerSecond
-      const colorIncrement = (endColor - startColor) / (animationDuration / frameDuration)
+      const animationDuration = 500; // Duration of the color transition in milliseconds
+      const framesPerSecond = 60; // Number of frames per second for the transition animation
+      const frameDuration = 1000 / framesPerSecond;
+      const colorIncrement = (endColor - startColor) / (animationDuration / frameDuration);
 
-      let currentColor = startColor
-      let animationFrame
+      let currentColor = startColor;
+      let animationFrame;
 
       const updateColor = () => {
-        if (
-          (colorIncrement >= 0 && currentColor <= endColor) ||
-          (colorIncrement < 0 && currentColor >= endColor)
-        ) {
-          this.updateParticleColor(currentColor)
-          currentColor += colorIncrement
-          animationFrame = requestAnimationFrame(updateColor)
+        if ((colorIncrement >= 0 && currentColor <= endColor) || (colorIncrement < 0 && currentColor >= endColor)) {
+          this.updateParticleColor(currentColor);
+          currentColor += colorIncrement;
+          animationFrame = requestAnimationFrame(updateColor);
         } else {
-          this.updateParticleColor(endColor)
-          cancelAnimationFrame(animationFrame)
+          this.updateParticleColor(endColor);
+          cancelAnimationFrame(animationFrame);
         }
-      }
+      };
 
-      updateColor()
+      updateColor();
     },
 
     updateParticleColor(color) {
-      const hue = Math.round(color)
+      const hue = Math.round(color);
       this.particles.forEach((particle) => {
-        particle.strokeColour.h = hue
-      })
+        particle.strokeColour.h = hue;
+      });
     },
 
     // From Old HTTP API
@@ -153,29 +148,29 @@ export default {
 
     updateParticleColors() {
       this.particles.forEach((particle) => {
-        particle.strokeColour.h = this.particleColor
-      })
+        particle.strokeColour.h = this.particleColor;
+      });
     },
     handleResize() {
-      const dpr = window.devicePixelRatio
-      this.ctx.scale(dpr, dpr)
-      this.w = this.canvas.width = window.innerWidth
-      this.h = this.canvas.height = window.innerHeight
-      this.midX = this.w * 0
+      const dpr = window.devicePixelRatio;
+      this.ctx.scale(dpr, dpr);
+      this.w = this.canvas.width = window.innerWidth;
+      this.h = this.canvas.height = window.innerHeight;
+      this.midX = this.w * 0;
     },
     createParticles() {
       let vRange = 2,
         vMin = 0.0001,
         vx,
-        vy
+        vy;
       for (let i = 0; i < this.maxParticles; i++) {
-        vx = this.Mrandom() * vRange + vMin
-        vy = this.Mrandom() * vRange + vMin
+        vx = this.Mrandom() * vRange + vMin;
+        vy = this.Mrandom() * vRange + vMin;
         if (this.Mrandom() > 0.5) {
-          vx *= -1
+          vx *= -1;
         }
         if (this.Mrandom() > 0.5) {
-          vy *= -1
+          vy *= -1;
         }
         this.particles.push({
           x: this.Mrandom() * this.w - this.radius,
@@ -183,77 +178,72 @@ export default {
           xv: this.Mrandom() * vx,
           yv: this.Mrandom() * vy,
           strokeColour: { h: this.particleColor, s: 1 }
-        })
+        });
       }
     },
     update() {
-      let p
+      let p;
       for (let loop = this.particles.length, i = 0; i < loop; i++) {
-        p = this.particles[i]
+        p = this.particles[i];
         // move
-        p.x += p.xv
-        p.y += p.yv
+        p.x += p.xv;
+        p.y += p.yv;
         // keep in bounds
         if (p.x < 0) {
-          p.x = 0
-          p.xv *= -1
+          p.x = 0;
+          p.xv *= -1;
         } else if (p.x > this.w) {
-          p.x = this.w
-          p.xv *= -1
+          p.x = this.w;
+          p.xv *= -1;
         }
         if (p.y < 0) {
-          p.y = 0
-          p.yv *= -1
+          p.y = 0;
+          p.yv *= -1;
         } else if (p.y > this.h) {
-          p.y = this.h
-          p.yv *= -1
+          p.y = this.h;
+          p.yv *= -1;
         }
       }
     },
     connect() {
-      let p1, p2, currentDist
+      let p1, p2, currentDist;
       for (let i = 0; i < this.maxParticles - 1; i++) {
-        p1 = this.particles[i]
+        p1 = this.particles[i];
         for (let j = i + 1; j < this.maxParticles; j++) {
-          p2 = this.particles[j]
-          currentDist = this.getDistance(p2.x, p1.x, p2.y, p1.y)
+          p2 = this.particles[j];
+          currentDist = this.getDistance(p2.x, p1.x, p2.y, p1.y);
           if (currentDist < this.ConnectionDist) {
-            this.ctx.beginPath()
-            this.ctx.moveTo(p1.x, p1.y)
-            this.ctx.strokeStyle =
-              'hsla(' +
-              p1.strokeColour.h +
-              ', 65%, 45%, ' +
-              (1 - (currentDist * 100) / this.ConnectionDist / 100) +
-              ')'
-            this.ctx.lineWidth = 2
-            this.ctx.lineTo(p2.x, p2.y)
-            this.ctx.stroke()
+            this.ctx.beginPath();
+            this.ctx.moveTo(p1.x, p1.y);
+            this.ctx.strokeStyle = 'hsla(' + p1.strokeColour.h + ', 65%, 45%, ' + (1 - (currentDist * 100) / this.ConnectionDist / 100) + ')';
+            this.ctx.lineWidth = 2;
+            this.ctx.lineTo(p2.x, p2.y);
+            this.ctx.stroke();
           }
         }
       }
     },
     getDistance(x1, x2, y1, y2) {
-      let xDiff = x1 - x2
-      let yDiff = y1 - y2
-      return this.Msqrt(xDiff * xDiff + yDiff * yDiff)
+      let xDiff = x1 - x2;
+      let yDiff = y1 - y2;
+      return this.Msqrt(xDiff * xDiff + yDiff * yDiff);
     },
     draw() {
-      this.ctx.clearRect(0, 0, this.w, this.h)
-      this.update()
-      this.connect()
-      let p
+      this.ctx.clearRect(0, 0, this.w, this.h);
+      this.update();
+      this.connect();
+      let p;
       for (let loop = this.particles.length, i = 0; i < loop; i++) {
-        p = this.particles[i]
-        this.ctx.beginPath()
-        this.ctx.arc(p.x, p.y, this.radius, 0, Math.PI * 2)
-        this.ctx.fillStyle = 'hsla(' + p.strokeColour.h + ', 55%, 25%, 1)'
-        this.ctx.fill()
+        p = this.particles[i];
+        this.ctx.beginPath();
+        this.ctx.arc(p.x, p.y, this.radius, 0, Math.PI * 2);
+        this.ctx.fillStyle = 'hsla(' + p.strokeColour.h + ', 55%, 25%, 1)';
+        this.ctx.fill();
       }
     },
     animate() {
-      this.animation = requestAnimationFrame(this.animate)
-      this.draw()
+      this.animation = requestAnimationFrame(this.animate);
+      this.draw();
     }
   },
   data() {
@@ -272,9 +262,9 @@ export default {
       Msqrt: null,
       Mrandom: null,
       animation: null
-    }
+    };
   }
-}
+};
 </script>
 
 <style scoped>
