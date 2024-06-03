@@ -260,10 +260,8 @@
 }
 
 .tyreeAni-4 {
-  -webkit-animation: animate-svg-stroke-4 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    0.30000000000000004s both;
-  animation: animate-svg-stroke-4 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.30000000000000004s
-    both;
+  -webkit-animation: animate-svg-stroke-4 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.30000000000000004s both;
+  animation: animate-svg-stroke-4 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.30000000000000004s both;
 }
 
 @-webkit-keyframes animate-svg-stroke-5 {
@@ -349,8 +347,7 @@
 }
 
 .tyreeAni-7 {
-  -webkit-animation: animate-svg-stroke-7 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    0.6000000000000001s both;
+  -webkit-animation: animate-svg-stroke-7 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6000000000000001s both;
   animation: animate-svg-stroke-7 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6000000000000001s both;
 }
 
@@ -379,8 +376,7 @@
 }
 
 .tyreeAni-8 {
-  -webkit-animation: animate-svg-stroke-8 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    0.7000000000000001s both;
+  -webkit-animation: animate-svg-stroke-8 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7000000000000001s both;
   animation: animate-svg-stroke-8 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7000000000000001s both;
 }
 
@@ -525,9 +521,7 @@
 }
 
 .tyreeAni-13 {
-  -webkit-animation: animate-svg-stroke-13 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    1.2000000000000002s both;
-  animation: animate-svg-stroke-13 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2000000000000002s
-    both;
+  -webkit-animation: animate-svg-stroke-13 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2000000000000002s both;
+  animation: animate-svg-stroke-13 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2000000000000002s both;
 }
 </style>

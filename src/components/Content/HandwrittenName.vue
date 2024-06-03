@@ -251,7 +251,7 @@
 
 <style>
 svg {
-filter: drop-shadow(0 0 0.70rem rgb(0, 0, 0));
+  filter: drop-shadow(0 0 0.7rem rgb(0, 0, 0));
 }
 @-webkit-keyframes animate-svg-stroke-1 {
   0% {
@@ -365,10 +365,8 @@ filter: drop-shadow(0 0 0.70rem rgb(0, 0, 0));
 }
 
 .tyreeAni-4 {
-  -webkit-animation: animate-svg-stroke-4 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    0.30000000000000004s both;
-  animation: animate-svg-stroke-4 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.30000000000000004s
-    both;
+  -webkit-animation: animate-svg-stroke-4 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.30000000000000004s both;
+  animation: animate-svg-stroke-4 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.30000000000000004s both;
 }
 
 @-webkit-keyframes animate-svg-stroke-5 {
@@ -454,8 +452,7 @@ filter: drop-shadow(0 0 0.70rem rgb(0, 0, 0));
 }
 
 .tyreeAni-7 {
-  -webkit-animation: animate-svg-stroke-7 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    0.6000000000000001s both;
+  -webkit-animation: animate-svg-stroke-7 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6000000000000001s both;
   animation: animate-svg-stroke-7 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6000000000000001s both;
 }
 
@@ -484,8 +481,7 @@ filter: drop-shadow(0 0 0.70rem rgb(0, 0, 0));
 }
 
 .tyreeAni-8 {
-  -webkit-animation: animate-svg-stroke-8 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    0.7000000000000001s both;
+  -webkit-animation: animate-svg-stroke-8 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7000000000000001s both;
   animation: animate-svg-stroke-8 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7000000000000001s both;
 }
 
@@ -630,10 +626,8 @@ filter: drop-shadow(0 0 0.70rem rgb(0, 0, 0));
 }
 
 .tyreeAni-13 {
-  -webkit-animation: animate-svg-stroke-13 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    1.2000000000000002s both;
-  animation: animate-svg-stroke-13 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2000000000000002s
-    both;
+  -webkit-animation: animate-svg-stroke-13 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2000000000000002s both;
+  animation: animate-svg-stroke-13 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2000000000000002s both;
 }
 
 @-webkit-keyframes animate-svg-stroke-14 {
@@ -690,10 +684,8 @@ filter: drop-shadow(0 0 0.70rem rgb(0, 0, 0));
 }
 
 .tyreeAni-15 {
-  -webkit-animation: animate-svg-stroke-15 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    1.4000000000000001s both;
-  animation: animate-svg-stroke-15 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.4000000000000001s
-    both;
+  -webkit-animation: animate-svg-stroke-15 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.4000000000000001s both;
+  animation: animate-svg-stroke-15 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.4000000000000001s both;
 }
 
 @-webkit-keyframes animate-svg-stroke-16 {
@@ -779,10 +771,8 @@ filter: drop-shadow(0 0 0.70rem rgb(0, 0, 0));
 }
 
 .tyreeAni-18 {
-  -webkit-animation: animate-svg-stroke-18 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    1.7000000000000002s both;
-  animation: animate-svg-stroke-18 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.7000000000000002s
-    both;
+  -webkit-animation: animate-svg-stroke-18 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.7000000000000002s both;
+  animation: animate-svg-stroke-18 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.7000000000000002s both;
 }
 
 @-webkit-keyframes animate-svg-stroke-19 {
@@ -839,10 +829,8 @@ filter: drop-shadow(0 0 0.70rem rgb(0, 0, 0));
 }
 
 .tyreeAni-20 {
-  -webkit-animation: animate-svg-stroke-20 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    1.9000000000000001s both;
-  animation: animate-svg-stroke-20 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.9000000000000001s
-    both;
+  -webkit-animation: animate-svg-stroke-20 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.9000000000000001s both;
+  animation: animate-svg-stroke-20 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.9000000000000001s both;
 }
 
 @-webkit-keyframes animate-svg-stroke-21 {

@@ -1,6 +1,6 @@
 /* eslint-disable */
 /** @type {import('tailwindcss').Configuration} */
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
@@ -22,4 +22,4 @@ module.exports = {
     logs: true // Shows info about daisyUI version and used config in the console when building your CSS
     // themeRoot: ':root' // The element that receives theme color CSS variables
   }
-}
+};

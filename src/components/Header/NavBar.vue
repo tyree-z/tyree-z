@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import HandwrittenName from '@/components/Content/HandwrittenFirstName.vue'
+import HandwrittenName from '@/components/Content/HandwrittenFirstName.vue';
 
 // const navigation = [
 //   { name: 'Dashboard', href: '#', current: true },

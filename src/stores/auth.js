@@ -1,5 +1,5 @@
-import { defineStore } from 'pinia'
-import { useAuth0 } from '@auth0/auth0-vue'
+import { defineStore } from 'pinia';
+import { useAuth0 } from '@auth0/auth0-vue';
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -11,35 +11,35 @@ export const useAuthStore = defineStore('auth', {
 
   actions: {
     login() {
-      this.isAuthenticated = true
-      this.user = this.$auth.user
-      this.accessToken = this.$auth.tokenManager.getAccessToken()
-      this.expiresAt = this.$auth.tokenManager.getAccessTokenExpirationDate()
+      this.isAuthenticated = true;
+      this.user = this.$auth.user;
+      this.accessToken = this.$auth.tokenManager.getAccessToken();
+      this.expiresAt = this.$auth.tokenManager.getAccessTokenExpirationDate();
     },
 
     logout() {
-      this.isAuthenticated = false
-      this.user = null
-      this.accessToken = null
-      this.expiresAt = null
+      this.isAuthenticated = false;
+      this.user = null;
+      this.accessToken = null;
+      this.expiresAt = null;
     }
   },
 
   getters: {
     isAuthenticated() {
-      return this.isAuthenticated
+      return this.isAuthenticated;
     },
 
     user() {
-      return this.user
+      return this.user;
     },
 
     accessToken() {
-      return this.accessToken
+      return this.accessToken;
     },
 
     expiresAt() {
-      return this.expiresAt
+      return this.expiresAt;
     }
   },
 
@@ -48,4 +48,4 @@ export const useAuthStore = defineStore('auth', {
   // Note that you need to add the `auth` plugin to your Vue app.
   // See the Auth0 documentation for more information.
   use: [useAuth0]
-})
+});

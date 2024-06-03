@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import ParticleCanvas from '../components/Content/ParticleCanvas.vue'
+import ParticleCanvas from '../components/Content/ParticleCanvas.vue';
 </script>
 
 <style scoped>
@@ -33,7 +33,7 @@ p {
   cursor: default;
 }
 .statusCode {
-  color: rgb(176, 159, 6)
+  color: rgb(176, 159, 6);
 }
 .goBackCursor {
   cursor: alias;
