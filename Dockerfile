@@ -1,20 +1,18 @@
-# Build
-FROM node:lts AS build-stage
-
-RUN groupadd -r appuser && useradd -r -g appuser -m appuser
+FROM node:lts-alpine AS build-stage
 
 WORKDIR /app
 COPY package*.json ./
 
-RUN chown -R appuser:appuser /app
-USER appuser
 RUN npm install
 COPY . .
 RUN npm run build
 
 # Expose
-FROM nginx:stable
-COPY --from=build-stage --chown=appuser:appuser /app/dist /usr/share/nginx/html
+FROM nginx:stable-alpine as production-stage
+COPY docker-files/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY docker-files/nginx/default.conf /etc/nginx/conf.d/default.conf
+
+COPY --from=build-stage /app/dist /usr/share/nginx/html
 EXPOSE 80
 
 # Healthcheck

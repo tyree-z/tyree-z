@@ -8,29 +8,9 @@ const router = createRouter({
       name: 'home',
       component: () => import('../views/HomeView.vue')
     },
-    // nested route apps
-    // {
-    //   path: '/apps',
-    //   name: 'apps',
-    //   children: [
-    //     {
-    //       path: 'myschedule',
-    //       name: 'myschedule',
-    //       component: () => import('../views/AppViews/Work/MyScheduleApp.vue')
-    //     },
-    //     {
-    //       path: 'whosworking',
-    //       name: 'whosworking',
-    //       component: () => import('../views/AppViews/Work/WhosWorkingTodayApp.vue')
-    //     }
-    //   ]
-    // },
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
     },
     {
@@ -38,7 +18,9 @@ const router = createRouter({
       name: 'cv',
       component: () => import('../views/CVView.vue')
     },
-    // Catch all 404 - define at the very end
+    /* 
+      Catch all
+    */
     {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
