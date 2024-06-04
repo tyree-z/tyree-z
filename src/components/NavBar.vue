@@ -15,10 +15,7 @@
             <img alt="User Avatar" src="https://github.com/tyree-z.png" />
           </div>
         </label>
-        <ul
-          tabindex="0"
-          class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-300 rounded-box w-52"
-        >
+        <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-300 rounded-box w-52">
           <li>
             <a class="justify-between">
               Profile
@@ -35,10 +32,23 @@
 
 <script setup>
 import HandwrittenName from '@/components/Content/HandwrittenFirstName.vue';
+import { useRouter } from 'vue-router';
 
-// const navigation = [
-//   { name: 'Dashboard', href: '#', current: true },
-// ]
+const router = useRouter();
+let routeObject = router.currentRoute.value;
+
+/* TODO
+
+-- NavBar Showing Current Page --
+
+Ex. 
+When Visitng "/" which is the "HomeView"
+"NavBar" should show a subtle underline underneath navigation selections.
+
+${routeObject.name} shows route name from vue-router.
+
+
+*/
 </script>
 <style scoped>
 .navbar {

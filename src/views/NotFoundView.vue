@@ -19,7 +19,8 @@
 </template>
 
 <script setup>
-import ParticleCanvas from '../components/Content/ParticleCanvas.vue';
+import ParticleCanvas from '@/components/Content/ParticleCanvas.vue';
+import Footer from '@/components/Footer.vue';
 </script>
 
 <style scoped>

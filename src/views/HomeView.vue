@@ -46,10 +46,10 @@
 
 <script setup>
 import { IconBrandGithub, IconBrandInstagram, IconAt } from '@tabler/icons-vue';
-import ParticleCanvas from '../components/Content/ParticleCanvas.vue';
-import HandwrittenName from '../components/Content/HandwrittenName.vue';
-import NavBar from '../components/Header/NavBar.vue';
-import Footer from '../components/Footer/Footer.vue';
+import ParticleCanvas from '@/components/Content/ParticleCanvas.vue';
+import HandwrittenName from '@/components/Content/HandwrittenName.vue';
+import NavBar from '@/components/NavBar.vue';
+import Footer from '@/components/Footer.vue';
 
 const sendEmail = () => {
   const name = 'tyree+website';
