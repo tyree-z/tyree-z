@@ -10,3 +10,10 @@ updates:
     schedule:
       interval: "daily"
     target-branch: "dev"
+    
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      # Check for updates to GitHub Actions every week
+      interval: "weekly"
+    target-branch: "dev"
