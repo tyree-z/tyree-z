@@ -1,7 +1,7 @@
 <template>
   <div class="navbar-nav flex-row order-md-last">
     <NavBarNotificationWidget />
-    <div v-if="isAuthenticated" class="nav-item dropdown">
+    <div class="nav-item dropdown">
       <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
         <span class="avatar avatar-sm" :style="{ backgroundImage: `url(${user.picture})` }"></span>
         <div class="d-none d-xl-block ps-2">
@@ -18,16 +18,9 @@
         <a href="#" class="dropdown-item text-danger" @click.prevent="authLogout">Logout</a>
       </div>
     </div>
-    <LoginButton v-else />
   </div>
 </template>
 
 <script setup>
-import { useAuth0 } from '@auth0/auth0-vue';
-import LoginButton from '../Auth/LoginButton.vue';
 import NavBarNotificationWidget from './NavBarNotificationWidget.vue';
-
-const { isAuthenticated, user, logout } = useAuth0();
-
-const authLogout = () => logout({ returnTo: window.location.origin });
 </script>

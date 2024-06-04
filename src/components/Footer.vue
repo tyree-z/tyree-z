@@ -11,7 +11,7 @@
 
 <script>
 import axios from 'axios';
-import packageJson from '../../../package.json';
+import packageJson from '../../package.json';
 export default {
   name: 'FooterComponent',
   data() {
