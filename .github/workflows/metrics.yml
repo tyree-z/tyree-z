@@ -1,12 +1,12 @@
 # Visit https://github.com/lowlighter/metrics#-documentation for full reference
-name: Metrics
+name: README Metrics
 on:
   # Schedule updates (each hour)
   schedule: [{cron: "0 * * * *"}]
   workflow_dispatch:
-  push: {branches: ["dev", "main"]}
+  push: {branches: ["main"]}
 jobs:
-  github-metrics:
+  readme-metrics:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -23,6 +23,7 @@ jobs:
           user: tyree-z
           template: classic
           base: header, activity, community, repositories, metadata
+          base_indepth: yes
           config_timezone: America/Vancouver
           plugin_activity: yes
           plugin_activity_days: 14
@@ -32,12 +33,12 @@ jobs:
           plugin_activity_visibility: all
           plugin_code: yes
           plugin_code_days: 3
-          plugin_code_lines: 20
+          plugin_code_lines: 12
           plugin_code_load: 400
           plugin_code_visibility: public
           plugin_habits: yes
           plugin_habits_charts_type: classic
-          plugin_habits_days: 14
+          plugin_habits_days: 15
           plugin_habits_facts: yes
           plugin_habits_from: 200
           plugin_habits_languages_limit: 8
@@ -50,6 +51,7 @@ jobs:
           plugin_languages_categories: markup, programming
           plugin_languages_colors: github
           plugin_languages_ignored: html, css
+          plugin_languages_indepth: yes
           plugin_languages_limit: 8
           plugin_languages_recent_categories: markup, programming
           plugin_languages_recent_days: 14
@@ -61,4 +63,11 @@ jobs:
           plugin_lines_repositories_limit: 4
           plugin_lines_sections: base
           plugin_traffic: yes
+          plugin_wakatime: yes
+          plugin_wakatime_days: 7
+          plugin_wakatime_limit: 5
+          plugin_wakatime_repositories_visibility: all
+          plugin_wakatime_sections: time, projects, projects-graphs, languages, languages-graphs, editors, os
+          plugin_wakatime_url: https://wakatime.com
+          plugin_wakatime_user: tyree
           repositories_forks: yes
