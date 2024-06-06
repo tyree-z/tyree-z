@@ -36,7 +36,7 @@
     "@vitejs/plugin-vue-jsx": "^4.0.0",
     "@vue/eslint-config-prettier": "^9.0.0",
     "autoprefixer": "^10.4.19",
-    "daisyui": "^4.10.1",
+    "daisyui": "^4.12.2",
     "eslint": "^9.0.0",
     "eslint-plugin-vue": "^9.24.1",
     "prettier": "^3.2.5",
