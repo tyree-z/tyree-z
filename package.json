@@ -37,7 +37,7 @@
     "@vue/eslint-config-prettier": "^9.0.0",
     "autoprefixer": "^10.4.19",
     "daisyui": "^4.12.2",
-    "eslint": "^9.0.0",
+    "eslint": "^9.8.0",
     "eslint-plugin-vue": "^9.24.1",
     "prettier": "^3.3.2",
     "semantic-release": "^24.0.0",
