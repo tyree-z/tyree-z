@@ -50,7 +50,7 @@ export default {
   methods: {
     async fetchLatestCommit() {
       try {
-        const response = await axios.get('https://api.tyree.ca/v1/website/git/latestcommit');
+        const response = await axios.get('https://api.tyree.ca/v1/web/github/latestcommit');
         this.latestCommitHash = response.data.short_hash; // Displaying first 7 characters of SHA as version
         this.latestCommitUrl = response.data.url;
       } catch (error) {
@@ -83,9 +83,9 @@ export default {
   user-select: none;
 }
 .online {
-  @apply bg-green-500 shadow-green-500;
+  @apply bg-green-700 shadow-green-500;
 }
 .offline {
-  @apply bg-red-500 shadow-red-500;
+  @apply bg-red-700 shadow-red-500;
 }
 </style>
