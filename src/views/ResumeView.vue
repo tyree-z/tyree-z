@@ -144,7 +144,7 @@ export default {
   },
   mounted() {
     axios
-      .get('https://api.tyree.ca/v1/website/cv/data')
+      .get('https://api.tyree.ca/v1/web/resume')
       .then((response) => {
         this.jobs = response.data.jobs;
       })
