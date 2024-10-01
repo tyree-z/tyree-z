@@ -1,6 +1,4 @@
-<template>
-  <div class="bg-base-100 p-4"></div>
-</template>
+<template></template>
 
 <script>
 export default {
