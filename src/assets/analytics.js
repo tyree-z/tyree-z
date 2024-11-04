@@ -382,7 +382,7 @@
 
   ['click', 'submit', 'error', 'touchstart', 'touchend', 'abort', 'load', 'unload', 'DOMContentLoaded'].forEach((eventType) => {
     document.addEventListener(eventType, (event) => {
-      fetch('http://api.tyree.ca/v1/archer/ingest', {
+      fetch('https://api.tyree.ca/v1/archer/ingest', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         // credentials: 'include',
