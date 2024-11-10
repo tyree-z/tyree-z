@@ -4,7 +4,7 @@ FROM alpine:latest AS build-stage
 # Install dependencies for building NGINX, compiling modules, and Node.js
 RUN apk add --no-cache \
     build-base \
-    openssl-dev \
+    openssl3-dev \
     pcre-dev \
     zlib-dev \
     linux-headers \
@@ -63,12 +63,22 @@ RUN ./configure \
     make && \
     make install
 
-# Production Stage: 
+# Ensure modules directory exists before the production stage
+RUN mkdir -p /usr/lib/nginx/modules && ls -la /usr/lib/nginx/modules
+
+# Production Stage
 FROM alpine:latest AS production-stage
 
 # Install NGINX runtime dependencies and set up directories
-RUN apk add --no-cache curl && \
-    mkdir -p /var/cache/nginx /usr/share/nginx/html /etc/nginx /usr/lib/nginx/modules /var/log/nginx
+RUN apk add --no-cache \
+    curl \
+    pcre \
+    zlib \
+    openssl3 \
+    && mkdir -p /var/cache/nginx /usr/share/nginx/html /etc/nginx /usr/lib/nginx/modules /var/log/nginx
+
+# Create the nginx user and group
+RUN addgroup -S nginx && adduser -S nginx -G nginx
 
 # Copy compiled NGINX binaries and modules
 COPY --from=build-stage /etc/nginx /etc/nginx
