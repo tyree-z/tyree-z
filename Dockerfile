@@ -53,17 +53,16 @@ RUN ./configure \
 # Create a new stage to keep the image lightweight
 FROM alpine:latest AS production-stage
 
+# Install NGINX runtime dependencies and set up directories
+RUN apk add --no-cache curl && \
+    mkdir -p /var/cache/nginx /usr/share/nginx/html /etc/nginx /usr/lib/nginx/modules /var/log/nginx
+
 # Copy necessary NGINX binaries and configs
 COPY --from=build-stage /etc/nginx /etc/nginx
 COPY --from=build-stage /usr/sbin/nginx /usr/sbin/nginx
-COPY --from=build-stage /usr/lib/nginx /usr/lib/nginx
+COPY --from=build-stage /usr/lib/nginx/modules /usr/lib/nginx/modules
 COPY docker-files/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY docker-files/nginx/default.conf /etc/nginx/conf.d/default.conf
-
-# Set up directories and permissions for NGINX runtime
-RUN apk add --no-cache curl && \
-    mkdir -p /var/cache/nginx /usr/share/nginx/html && \
-    chown -R nginx:nginx /var/cache/nginx /var/log/nginx
 
 # Copy application files
 COPY --from=build-stage /app/dist /usr/share/nginx/html
