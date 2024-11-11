@@ -41,9 +41,10 @@ export default defineConfig({
         enabled: false
       },
       workbox: {
+        cacheId: 'tyree-z',
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/r2\.tyree\.ca\/.*\.(png|ico)$/, // Caches icons from external URLs
+            urlPattern: /^https:\/\/r2\.tyree\.ca\/.*\.(jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|otf|mp4|webm|mp3)$/,
             handler: 'CacheFirst',
             options: {
               cacheName: 'external-resources',
