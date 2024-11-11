@@ -1,5 +1,5 @@
 # Build Stage: Node.js and Application Build
-FROM node:22-alpine AS build-stage
+FROM alpine:latest AS build-stage
 
 # Install Node.js dependencies
 WORKDIR /app
