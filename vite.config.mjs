@@ -9,7 +9,7 @@ export default defineConfig({
     vue(),
     vueJsx(),
     VitePWA({
-      registerType: 'autoUpdate', // Automatically updates the service worker
+      registerType: 'autoUpdate',
       manifest: {
         name: 'Tyree Zacharopoulos - Network Engineer & Developer',
         short_name: 'Tyree Zacharopoulos',
@@ -40,46 +40,7 @@ export default defineConfig({
       devOptions: {
         enabled: false
       },
-      workbox: {
-        cacheId: 'tyree-z',
-        runtimeCaching: [
-          {
-            urlPattern: /^https:\/\/r2\.tyree\.ca\/.*\.(jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|otf|mp4|webm|mp3)$/,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'external-resources',
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 30 // Cache for 30 days
-              }
-            }
-          },
-          {
-            urlPattern: ({ request }) => request.destination === 'document', // Cache HTML pages
-            handler: 'NetworkFirst',
-            options: {
-              cacheName: 'html-cache',
-              networkTimeoutSeconds: 3,
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 // Cache for 1 day
-              }
-            }
-          },
-          {
-            urlPattern: ({ request }) => request.destination === 'script' || request.destination === 'style', // Cache CSS and JS files
-            handler: 'StaleWhileRevalidate',
-            options: {
-              cacheName: 'assets-cache',
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 30 // Cache for 30 days
-              }
-            }
-          }
-        ]
-      },
-      srcDir: 'src', // Set a directory for service worker
+      srcDir: 'src',
       filename: 'service-worker.js'
     })
   ],
