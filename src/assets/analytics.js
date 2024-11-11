@@ -419,7 +419,7 @@
           },
           additional_data: {}
         })
-      }).catch((error) => console.error('Error:', error));
+      }).catch();
     });
   });
 })();

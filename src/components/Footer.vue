@@ -54,7 +54,7 @@ export default {
         this.latestCommitHash = response.data.short_hash; // Displaying first 7 characters of SHA as version
         this.latestCommitUrl = response.data.url;
       } catch (error) {
-        console.error('Error fetching latest commit:', error);
+        console.error(`Error fetching latest commit: ${error.message}`);
       }
     },
     async checkApiStatus() {
@@ -68,7 +68,7 @@ export default {
         }
       } catch (error) {
         this.apiStatus = 'offline';
-        console.error('Error checking API status:', error);
+        console.error(`Error checking API status: ${error.message}`);
       }
     }
   }

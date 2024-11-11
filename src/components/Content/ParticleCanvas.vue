@@ -67,7 +67,7 @@ export default {
       };
 
       ws.onerror = (error) => {
-        console.error('WebSocket error:', error);
+        console.error('WebSocket error');
       };
 
       ws.onclose = () => {

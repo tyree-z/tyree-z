@@ -17,5 +17,4 @@ app.use(InlineSvgPlugin);
 
 // Register ApexCharts component
 app.component('ApexChart', VueApexCharts);
-
 app.mount('#application');
