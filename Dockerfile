@@ -1,5 +1,5 @@
 # Build Stage: Node.js and Application Build
-FROM alpine:latest AS build-stage
+FROM node:lts-alpine AS build-stage
 
 # Install Node.js dependencies
 WORKDIR /app
@@ -26,7 +26,7 @@ COPY --from=build-stage /app/dist /usr/share/nginx/html
 EXPOSE 80
 
 # Healthcheck to monitor NGINX
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 CMD curl --fail http://localhost:80 || exit 1
+HEALTHCHECK --interval=30s --timeout=10s --start-period=3s --retries=5 CMD curl --fail http://localhost:80 || exit 1
 
 # Run NGINX in the foreground
 CMD ["nginx", "-g", "daemon off;"]
