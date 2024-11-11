@@ -15,13 +15,13 @@ function logCacheAction(action, cacheName, url) {
 
 // Define caching strategies with detailed logging
 registerRoute(
-  /^https:\/\/r2\.tyree\.ca\/.*\.(png|ico)$/,
+  /^https:\/\/r2\.tyree\.ca\/.*\.(jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|otf|mp4|webm|mp3)$/,
   new CacheFirst({
-    cacheName: 'external-resources',
+    cacheName: 'external-cache',
     plugins: [
       {
-        cacheDidUpdate: ({ request }) => logCacheAction('Updated', 'external-resources', request.url),
-        cachedResponseWillBeUsed: ({ request }) => logCacheAction('Serving from', 'external-resources', request.url)
+        cacheDidUpdate: ({ request }) => logCacheAction('Updated', 'external-cache', request.url),
+        cachedResponseWillBeUsed: ({ request }) => logCacheAction('Serving from', 'external-cache', request.url)
       }
     ]
   })
