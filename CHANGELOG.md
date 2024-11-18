@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/tyree-z/tyree-z/compare/v1.4.1...v1.4.2) (2024-11-18)
+
+
+### Bug Fixes
+
+* **Semantic Release:** Fix package.json not updating version ([edb7f39](https://github.com/tyree-z/tyree-z/commit/edb7f39309cbc21ae014415e93bcb948cedcbaa1))
+
 ## [1.4.1](https://github.com/tyree-z/tyree-z/compare/v1.4.0...v1.4.1) (2024-11-18)
 
 
