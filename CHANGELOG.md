@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/tyree-z/tyree-z/compare/v1.4.0...v1.4.1) (2024-11-18)
+
+
+### Bug Fixes
+
+* **Semantic Release:** Commit message change ([3a34013](https://github.com/tyree-z/tyree-z/commit/3a340132cb3cb8d75719449a1e081e92bae6a1bf))
+
 # [1.4.0](https://github.com/tyree-z/tyree-z/compare/v1.3.5...v1.4.0) (2024-11-18)
 
 
