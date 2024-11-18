@@ -42,7 +42,6 @@
     "vue3-apexcharts": "^1.6.0"
   },
   "devDependencies": {
-    "@codedependant/semantic-release-docker": "^5.0.3",
     "@rushstack/eslint-patch": "^1.10.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
@@ -80,28 +79,7 @@
           ]
         }
       ],
-      "@semantic-release/github",
-      [
-        "@codedependant/semantic-release-docker",
-        {
-          "dockerTags": [
-            "latest",
-            "{{version}}",
-            "{{major}}-latest",
-            "{{major}}.{{minor}}"
-          ],
-          "dockerImage": "tyreez/frontend",
-          "dockerFile": "Dockerfile",
-          "dockerPlatform": [
-            "linux/amd64",
-            "linux/arm64"
-          ],
-          "dockerArgs": {
-            "DOCKER_REGISTRY_USER": "{{env.DOCKER_REGISTRY_USER}}",
-            "DOCKER_REGISTRY_PASSWORD": "{{env.DOCKER_REGISTRY_PASSWORD}}"
-          }
-        }
-      ]
+      "@semantic-release/github"
     ]
   }
 }
