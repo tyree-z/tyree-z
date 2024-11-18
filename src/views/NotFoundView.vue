@@ -1,6 +1,5 @@
 <template>
   <ParticleCanvas class="w-full h-full blur-lg" />
-  <NavBar />
   <div class="hero min-h-screen">
     <div class="hero-content text-center">
       <div class="grid grid-cols-1 gap-3 prevent-select">
@@ -21,7 +20,6 @@
 
 <script setup>
 import ParticleCanvas from '@/components/Content/ParticleCanvas.vue';
-import NavBar from '../components/NavBar.vue';
 import Footer from '@/components/Footer.vue';
 </script>
 
